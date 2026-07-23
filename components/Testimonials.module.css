@@ -1,0 +1,32 @@
+.quoteCard {
+  display: flex;
+  flex-direction: column;
+}
+.marks {
+  font-family: var(--font-serif);
+  font-size: 3.5rem;
+  line-height: 0.6;
+  color: var(--brass);
+  margin-bottom: 0.5rem;
+}
+.quote {
+  font-size: 1.1rem;
+  color: var(--ink);
+  margin: 0;
+  flex: 1;
+}
+.cite {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1.25rem;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  font-weight: 600;
+}
+.dash {
+  width: 26px;
+  height: 2px;
+  background: var(--brass);
+  display: inline-block;
+}

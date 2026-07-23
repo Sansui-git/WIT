@@ -1,0 +1,28 @@
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  flex-wrap: wrap;
+}
+.copy {
+  flex: 1 1 340px;
+}
+.copy h2 {
+  max-width: 18ch;
+}
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  flex-shrink: 0;
+}
+
+@media (max-width: 720px) {
+  .actions {
+    width: 100%;
+  }
+  .actions .btn {
+    width: 100%;
+  }
+}

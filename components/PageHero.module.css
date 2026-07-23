@@ -1,0 +1,47 @@
+.hero {
+  background: linear-gradient(180deg, var(--navy) 0%, var(--navy-dark) 100%);
+  color: var(--on-dark);
+  padding-block: clamp(2.25rem, 5vw, 3.5rem);
+}
+.hero h1 {
+  color: var(--on-dark);
+  max-width: 20ch;
+}
+.hero .lead {
+  color: var(--on-dark-soft);
+  max-width: 60ch;
+}
+
+.crumbs {
+  margin-bottom: 1.25rem;
+}
+.crumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.95rem;
+}
+.crumbs li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0;
+  color: var(--on-dark-soft);
+}
+.crumbs a {
+  color: #edcf9c;
+  text-decoration: none;
+}
+.crumbs a:hover {
+  text-decoration: underline;
+}
+.crumbs svg {
+  opacity: 0.5;
+}
+.crumbs span[aria-current] {
+  color: var(--on-dark);
+}
