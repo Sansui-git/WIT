@@ -29,21 +29,6 @@ export default function Header() {
 
   return (
     <header className={styles.header}>
-      {/* Top contact bar */}
-      <div className={styles.topbar}>
-        <div className={`container ${styles.topbarInner}`}>
-          <span className={styles.topbarText}>
-            Serving {siteConfig.serviceAreaLabel}
-          </span>
-          <a className={styles.topbarPhone} href={phoneLink}>
-            <Icon name="phone" width={18} height={18} />
-            <span>
-              Call <strong>{phoneDisplay}</strong>
-            </span>
-          </a>
-        </div>
-      </div>
-
       {/* Main navigation */}
       <div className={styles.bar}>
         <div className={`container ${styles.barInner}`}>
@@ -73,9 +58,10 @@ export default function Header() {
             </ul>
           </nav>
 
-          <Link href="/request-a-consultation" className={`btn btn--primary ${styles.headerCta}`}>
-            Free Consultation
-          </Link>
+          <a href={phoneLink} className={`btn btn--navy ${styles.headerCta}`}>
+            <Icon name="phone" width={19} height={19} />
+            Call {phoneDisplay}
+          </a>
 
           <button
             type="button"

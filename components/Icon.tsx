@@ -24,7 +24,9 @@ export type IconName =
   | "arrow-right"
   | "menu"
   | "close"
-  | "star";
+  | "star"
+  | "camera"
+  | "dollar";
 
 const paths: Record<IconName, JSX.Element> = {
   "map-pin": (
@@ -128,6 +130,19 @@ const paths: Record<IconName, JSX.Element> = {
   ),
   star: (
     <path d="M12 3.5l2.6 5.3 5.9.9-4.2 4.1 1 5.8L12 17l-5.3 2.6 1-5.8L3.5 9.7l5.9-.9L12 3.5Z" />
+  ),
+  camera: (
+    <>
+      <path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z" />
+      <circle cx="12" cy="13" r="3.5" />
+    </>
+  ),
+  dollar: (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 6.5v11" />
+      <path d="M15 8.8c-.7-1-1.8-1.4-3-1.4-1.7 0-3 .9-3 2.3 0 2.9 6 1.7 6 4.6 0 1.4-1.3 2.3-3 2.3-1.2 0-2.3-.4-3-1.4" />
+    </>
   ),
 };
 

@@ -20,7 +20,7 @@ export const siteConfig = {
   phone: "780-289-2393",
   // Digits only, used for tel: links.
   phoneHref: "+17802892393",
-  email: "info@seniorsafetysolutions.ca",
+  email: "info@walkinbathexperts.com",
 
   // ---- Location & service area --------------------------------------------
   serviceAreaLabel: "Edmonton and surrounding communities, Alberta",
@@ -31,9 +31,8 @@ export const siteConfig = {
   city: "Edmonton",
 
   // ---- Web -----------------------------------------------------------------
-  // Update this to your live domain before publishing (used for SEO,
-  // sitemap, canonical URLs, and structured data).
-  url: "https://www.edmontonwalkinbathexperts.ca",
+  // Live domain (used for SEO, sitemap, canonical URLs, and structured data).
+  url: "https://www.walkinbathexperts.com",
 
   // Business hours (used in structured data). Adjust to your real hours.
   hours: [
@@ -55,6 +54,36 @@ export const siteConfig = {
 export const phoneDisplay = siteConfig.phone;
 export const phoneLink = `tel:${siteConfig.phoneHref}`;
 export const emailLink = `mailto:${siteConfig.email}`;
+
+// ---------------------------------------------------------------------------
+//  PRICING
+//  One honest anchor number. Update here when your pricing changes.
+// ---------------------------------------------------------------------------
+export const pricing = {
+  startingPrice: "$15,800",
+  note: "Complete, professionally installed projects — tub, installation, and cleanup included. Your written quote depends on the tub you choose, the options you add, and your bathroom.",
+};
+
+// ---------------------------------------------------------------------------
+//  IMAGES
+//  Central place for site photos. To add a real photo:
+//   1. Put the image file in the /public/images folder (create it if needed),
+//      e.g. /public/images/hero.jpg
+//   2. Set the matching path below, e.g. hero: "/images/hero.jpg"
+//  Any entry left as "" shows a tasteful placeholder until you fill it.
+// ---------------------------------------------------------------------------
+export const siteImages: Record<string, string> = {
+  hero: "",            // Big photo of a walk-in tub in a bright bathroom
+  forSeniors: "",      // A senior enjoying a safe bath / bathroom
+  forAdultChildren: "",// Adult child with parent
+  forCaregivers: "",   // Caregiver with client
+  install1Before: "",  // Before photo — project 1
+  install1After: "",   // After photo — project 1
+  install2Before: "",  // Before photo — project 2
+  install2After: "",   // After photo — project 2
+  install3Before: "",  // Before photo — project 3
+  install3After: "",   // After photo — project 3
+};
 
 // ---------------------------------------------------------------------------
 //  NAVIGATION
