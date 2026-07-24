@@ -38,7 +38,7 @@ interface Lead {
   name: string;
   phone?: string;
   email?: string;
-  city?: string;
+  postal?: string;
   who?: string;
   time?: string;
   message?: string;
@@ -67,7 +67,7 @@ function buildEmail(lead: Lead): { subject: string; text: string; html: string }
     ["Name", lead.name],
     ["Phone", lead.phone],
     ["Email", lead.email],
-    ["Community", lead.city],
+    ["Postal code", lead.postal],
     ["Who it's for", lead.who],
     ["Best time to reach", lead.time],
     ["Message", lead.message],
@@ -153,13 +153,16 @@ export async function POST(request: Request) {
   const name = typeof body.name === "string" ? body.name.trim() : "";
   const phone = typeof body.phone === "string" ? body.phone.trim() : "";
   const email = typeof body.email === "string" ? body.email.trim() : "";
+  const postal = typeof body.postal === "string" ? body.postal.trim() : "";
   const consent = body.consent;
 
   const errors: string[] = [];
   if (!name) errors.push("name");
-  if (!phone && !email) errors.push("contact");
-  if (phone && phone.replace(/[^0-9]/g, "").length < 7) errors.push("phone");
-  if (email && !isEmail(email)) errors.push("email");
+  if (!phone || phone.replace(/[^0-9]/g, "").length < 7) errors.push("phone");
+  if (!email || !isEmail(email)) errors.push("email");
+  if (postal && !/^[A-Za-z]\d[A-Za-z]\s?\d[A-Za-z]\d$/.test(postal)) {
+    errors.push("postal");
+  }
   if (!consent || consent === "false") errors.push("consent");
 
   if (errors.length > 0) {
@@ -173,7 +176,7 @@ export async function POST(request: Request) {
     name,
     phone: phone || undefined,
     email: email || undefined,
-    city: typeof body.city === "string" ? body.city.trim() : undefined,
+    postal: postal ? postal.toUpperCase() : undefined,
     who: typeof body.who === "string" ? body.who : undefined,
     time: typeof body.time === "string" ? body.time : undefined,
     message: typeof body.message === "string" ? body.message.trim() : undefined,

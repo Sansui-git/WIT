@@ -34,7 +34,7 @@ export default function Header() {
         <div className={`container ${styles.barInner}`}>
           <Link href="/" className={styles.brand} aria-label={`${siteConfig.companyName} — home`}>
             <span className={styles.brandMark} aria-hidden="true">
-              <Icon name="water" width={26} height={26} />
+              <Icon name="tub" width={28} height={28} />
             </span>
             <span className={styles.brandText}>
               <span className={styles.brandName}>{siteConfig.companyName}</span>

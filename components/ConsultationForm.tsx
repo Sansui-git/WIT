@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { serviceAreas, phoneLink, phoneDisplay } from "@/lib/site";
+import { phoneLink, phoneDisplay } from "@/lib/site";
 import Icon from "./Icon";
 import styles from "./ConsultationForm.module.css";
 
@@ -27,18 +27,22 @@ export default function ConsultationForm() {
     const name = (data.get("name") as string)?.trim();
     const phone = (data.get("phone") as string)?.trim();
     const email = (data.get("email") as string)?.trim();
+    const postal = (data.get("postal") as string)?.trim();
     const consent = data.get("consent");
 
     if (!name) next.name = "Please enter your name.";
-    if (!phone && !email) {
-      next.phone = "Please give us a phone number or email so we can reach you.";
-    } else {
-      if (phone && phone.replace(/[^0-9]/g, "").length < 7) {
-        next.phone = "Please enter a phone number we can reach you at.";
-      }
-      if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        next.email = "Please enter a valid email address.";
-      }
+    if (!phone) {
+      next.phone = "Please enter a phone number we can reach you at.";
+    } else if (phone.replace(/[^0-9]/g, "").length < 7) {
+      next.phone = "Please enter a phone number we can reach you at.";
+    }
+    if (!email) {
+      next.email = "Please enter your email address.";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      next.email = "Please enter a valid email address.";
+    }
+    if (postal && !/^[A-Za-z]\d[A-Za-z]\s?\d[A-Za-z]\d$/.test(postal)) {
+      next.postal = "Please enter a valid postal code (e.g. T5A 1B2).";
     }
     if (!consent) {
       next.consent = "Please confirm we may contact you about your request.";
@@ -175,13 +179,17 @@ export default function ConsultationForm() {
         </div>
 
         <div className={styles.field}>
-          <label htmlFor="field-email">Email address</label>
+          <label htmlFor="field-email">
+            Email address <span className={styles.req}>*</span>
+          </label>
           <input
             id="field-email"
             name="email"
             type="email"
             autoComplete="email"
             inputMode="email"
+            required
+            aria-required="true"
             aria-invalid={errors.email ? "true" : undefined}
             aria-describedby={errors.email ? "err-email" : undefined}
           />
@@ -193,20 +201,22 @@ export default function ConsultationForm() {
         </div>
 
         <div className={styles.field}>
-          <label htmlFor="field-city">Your community</label>
+          <label htmlFor="field-postal">Postal code</label>
           <input
-            id="field-city"
-            name="city"
+            id="field-postal"
+            name="postal"
             type="text"
-            list="community-list"
-            autoComplete="address-level2"
-            placeholder="e.g. Edmonton"
+            autoComplete="postal-code"
+            placeholder="e.g. T5A 1B2"
+            maxLength={7}
+            aria-invalid={errors.postal ? "true" : undefined}
+            aria-describedby={errors.postal ? "err-postal" : undefined}
           />
-          <datalist id="community-list">
-            {serviceAreas.map((area) => (
-              <option key={area} value={area} />
-            ))}
-          </datalist>
+          {errors.postal && (
+            <p className={styles.fieldError} id="err-postal">
+              {errors.postal}
+            </p>
+          )}
         </div>
 
         <div className={styles.field}>

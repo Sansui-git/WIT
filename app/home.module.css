@@ -79,6 +79,11 @@
     text-align: left;
   }
 }
+@media (max-width: 430px) {
+  .trustStrip {
+    grid-template-columns: 1fr;
+  }
+}
 
 /* ---- Safer bathing ------------------------------------------------------ */
 .saferLayout {

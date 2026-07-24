@@ -72,17 +72,24 @@
 .brandText {
   display: flex;
   flex-direction: column;
-  line-height: 1.15;
+  line-height: 1.12;
 }
 .brandName {
   font-family: var(--font-serif);
-  font-weight: 700;
-  font-size: 1.3rem;
+  font-weight: 800;
+  font-size: 1.08rem;
   color: var(--navy);
+  max-width: 15ch; /* wraps neatly onto two lines */
 }
 .brandSub {
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   color: var(--ink-soft);
+  margin-top: 0.2rem;
+}
+@media (max-width: 1340px) {
+  .brandSub {
+    display: none;
+  }
 }
 
 /* ---- Desktop nav ------------------------------------------------------- */
@@ -103,6 +110,17 @@
   font-weight: 600;
   font-size: 0.98rem;
   white-space: nowrap;
+}
+@media (max-width: 1320px) {
+  .desktopNav a {
+    font-size: 0.92rem;
+    padding: 0.45rem 0.5rem;
+  }
+  .headerCta {
+    font-size: 0.92rem;
+    padding: 0.6rem 1rem;
+    min-height: 44px;
+  }
 }
 .desktopNav a:hover {
   background: var(--navy-100);
