@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { primaryNav, siteConfig, phoneLink, phoneDisplay } from "@/lib/site";
 import Icon from "./Icon";
@@ -33,13 +34,14 @@ export default function Header() {
       <div className={styles.bar}>
         <div className={`container ${styles.barInner}`}>
           <Link href="/" className={styles.brand} aria-label={`${siteConfig.companyName} — home`}>
-            <span className={styles.brandMark} aria-hidden="true">
-              <Icon name="tub" width={28} height={28} />
-            </span>
-            <span className={styles.brandText}>
-              <span className={styles.brandName}>{siteConfig.companyName}</span>
-              <span className={styles.brandSub}>Walk-in bathtubs, professionally installed</span>
-            </span>
+            <Image
+              src="/images/logo.png"
+              alt={siteConfig.companyName}
+              width={210}
+              height={70}
+              priority
+              className={styles.brandLogo}
+            />
           </Link>
 
           <nav className={styles.desktopNav} aria-label="Primary">

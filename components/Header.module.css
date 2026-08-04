@@ -58,6 +58,22 @@
   text-decoration: none;
   margin-right: auto;
 }
+.brandLogo {
+  width: auto;
+  height: 56px;
+  max-width: 220px;
+  object-fit: contain;
+}
+@media (max-width: 1320px) {
+  .brandLogo {
+    height: 48px;
+  }
+}
+@media (max-width: 480px) {
+  .brandLogo {
+    height: 42px;
+  }
+}
 .brandMark {
   display: inline-flex;
   align-items: center;

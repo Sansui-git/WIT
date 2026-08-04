@@ -73,11 +73,13 @@ export const pricing = {
 //  Any entry left as "" shows a tasteful placeholder until you fill it.
 // ---------------------------------------------------------------------------
 export const siteImages: Record<string, string> = {
-  hero: "",            // Big photo of a walk-in tub in a bright bathroom
-  forSeniors: "",      // A senior enjoying a safe bath / bathroom
-  forAdultChildren: "",// Adult child with parent
-  forCaregivers: "",   // Caregiver with client
-  install1Before: "",  // Before photo — project 1
+  hero: "/images/hero.jpg",              // Staged bathroom, front view of tub
+  forSeniors: "/images/for-seniors.jpg", // Senior relaxing in the tub
+  forAdultChildren: "",                  // Adult child with parent
+  forCaregivers: "",                     // Caregiver with client
+  tubOverhead: "/images/tub-overhead.jpg",   // Product: overhead view, jets on
+  tubInstalled: "/images/tub-installed.jpg", // Product: installed in bathroom
+  install1Before: "",  // Before photo — project 1 (YOUR real projects only)
   install1After: "",   // After photo — project 1
   install2Before: "",  // Before photo — project 2
   install2After: "",   // After photo — project 2

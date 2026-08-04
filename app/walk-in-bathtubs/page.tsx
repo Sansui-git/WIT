@@ -1,8 +1,9 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/seo";
-import { products, benefits, phoneLink, phoneDisplay } from "@/lib/site";
+import { products, benefits, siteImages, phoneLink, phoneDisplay } from "@/lib/site";
 import Icon, { type IconName } from "@/components/Icon";
+import ImageSlot from "@/components/ImageSlot";
 import PageHero from "@/components/PageHero";
 import ConsultationCTA from "@/components/ConsultationCTA";
 import JsonLd from "@/components/JsonLd";
@@ -71,6 +72,21 @@ export default function WalkInBathtubsPage() {
               <li>Handheld shower option</li>
               <li>Optional hydrotherapy jets</li>
             </ul>
+          </div>
+
+          <div className="grid grid--2 mt-3">
+            <ImageSlot
+              src={siteImages.tubOverhead}
+              alt="Overhead view of a walk-in bathtub filled with water, hydrotherapy jets running"
+              label="Photo: walk-in tub with hydrotherapy jets"
+              aspect="16 / 10"
+            />
+            <ImageSlot
+              src={siteImages.tubInstalled}
+              alt="Walk-in bathtub installed in a home bathroom with the door closed"
+              label="Photo: walk-in tub installed in a bathroom"
+              aspect="16 / 10"
+            />
           </div>
         </div>
       </section>
