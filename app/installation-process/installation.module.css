@@ -72,3 +72,10 @@
     gap: 1rem;
   }
 }
+
+.stepIcon {
+  display: inline-block;
+  vertical-align: -0.3em;
+  margin-right: 0.55rem;
+  color: var(--brass-dark);
+}

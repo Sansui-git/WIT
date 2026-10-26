@@ -1,228 +1,373 @@
 import type { SVGProps } from "react";
 
 /**
- * Duotone inline icon set — soft fill layer + crisp 2px stroke, 24px grid.
- * Icons inherit currentColor, so they recolor automatically wherever used.
+ * Custom icon set drawn for Edmonton Walk-In Bath Experts.
+ * 48px grid, rounded strokes and a soft duotone fill. Icons inherit
+ * currentColor, so they recolor automatically wherever they are used.
+ * Standalone SVG copies of every icon live in /public/icons.
  */
 
-export type IconName =
-  | "map-pin"
-  | "wrench"
-  | "home"
-  | "chat"
-  | "door"
-  | "chair"
-  | "support"
-  | "water"
-  | "independence"
-  | "heart"
-  | "phone"
-  | "mail"
-  | "check"
-  | "shield"
-  | "clock"
-  | "arrow-right"
-  | "menu"
-  | "close"
-  | "star"
-  | "camera"
-  | "dollar"
-  | "tub";
+const iconNames = ["walk-in-tub", "low-step-entry", "grab-bar", "non-slip-floor", "hydrotherapy-jets", "air-bath", "built-in-seat", "heated-seat", "handheld-shower", "tub-to-shower", "walk-in-shower", "quick-drain", "leakproof-door", "anti-scald", "chromotherapy", "easy-controls", "one-day-install", "certified-installer", "lifetime-warranty", "transferable-warranty", "free-assessment", "no-pressure", "cancellation-10-day", "transparent-pricing", "government-funding", "home-equity-loan", "tax-credit", "financing", "caregiver", "fall-prevention", "aging-in-place", "local-alberta", "senior-discount", "phone", "email", "location", "hours", "star-review", "quote-request", "check", "arrow-right", "menu", "close", "chevron-down"] as const;
 
-/** Soft fill layer helper style */
-const fillProps = {
-  fill: "currentColor",
-  stroke: "none",
-  opacity: 0.14,
+/** Older names kept so existing content in lib/site.ts keeps working. */
+const aliases = {
+  "map-pin": "location", wrench: "certified-installer", home: "free-assessment", chat: "no-pressure",
+  door: "walk-in-tub", chair: "built-in-seat", support: "grab-bar", water: "hydrotherapy-jets",
+  independence: "aging-in-place", heart: "caregiver", mail: "email", shield: "lifetime-warranty",
+  clock: "hours", star: "star-review", dollar: "financing", tub: "walk-in-tub", camera: "walk-in-tub",
 } as const;
 
-const paths: Record<IconName, JSX.Element> = {
-  "map-pin": (
+export type IconName = (typeof iconNames)[number] | keyof typeof aliases;
+
+/** Soft fill layer */
+const F = { fill: "currentColor", stroke: "none", fillOpacity: 0.16 } as const;
+
+const paths: Record<(typeof iconNames)[number], JSX.Element> = {
+  "walk-in-tub": (
     <>
-      <path
-        d="M12 21.2S5 16.5 5 10.4a7 7 0 0 1 14 0c0 6.1-7 10.8-7 10.8Z"
-        {...fillProps}
-      />
-      <path d="M12 21.2S5 16.5 5 10.4a7 7 0 0 1 14 0c0 6.1-7 10.8-7 10.8Z" />
-      <circle cx="12" cy="10.2" r="2.6" fill="#fff" fillOpacity="0.9" />
+      <path {...F} d="M24 22h16v12a6 6 0 0 1-6 6H24z"/>
+      <path d="M8 14h30a4 4 0 0 1 4 4v16a6 6 0 0 1-6 6H14a6 6 0 0 1-6-6z"/>
+      <rect x="11.5" y="18" width="11" height="18.5" rx="2"/>
+      <path d="M19 25v5"/><path d="M26 22h12"/>
+      <path d="M14 40v3M36 40v3"/>
+      <path d="M33 14v-3a2 2 0 0 1 2-2h3"/>
     </>
   ),
-  wrench: (
+  "low-step-entry": (
     <>
-      <path
-        d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"
-        {...fillProps}
-      />
-      <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+      <path {...F} d="M22 40v-8h20v8z"/>
+      <path d="M4 40h40"/><path d="M22 40v-8h20v8"/>
+      <path d="M8 32c1-10 7-15 14-14"/><path d="M18 14l5 4-4 5"/>
     </>
   ),
-  home: (
+  "grab-bar": (
     <>
-      <path d="M5.5 9.6 12 4l6.5 5.6V20a1 1 0 0 1-1 1h-11a1 1 0 0 1-1-1Z" {...fillProps} />
-      <path d="M3 10.8 12 3l9 7.8" />
-      <path d="M5.5 9.5V20a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1V9.5" />
-      <path d="M10 21v-5a2 2 0 0 1 4 0v5" />
+      <g transform="rotate(-30 24 24)">
+      <circle {...F} cx="8" cy="24" r="5"/><circle {...F} cx="40" cy="24" r="5"/>
+      <circle cx="8" cy="24" r="5"/><circle cx="40" cy="24" r="5"/>
+      <rect x="8" y="21" width="32" height="6" rx="3"/>
+      <path d="M16 21v6M32 21v6" strokeOpacity=".5"/></g>
     </>
   ),
-  chat: (
+  "non-slip-floor": (
     <>
-      <path
-        d="M21 11.8a8 8 0 0 1-11.6 7.1L4 20.5l1.6-4.6A8 8 0 1 1 21 11.8Z"
-        {...fillProps}
-      />
-      <path d="M21 11.8a8 8 0 0 1-11.6 7.1L4 20.5l1.6-4.6A8 8 0 1 1 21 11.8Z" />
-      <path d="M8.6 12h.01M12.1 12h.01M15.6 12h.01" />
+      <path {...F} d="M4 36h40v6H4z"/>
+      <path d="M4 36h40"/><path d="M8 40l2-2M14 40l2-2M20 40l2-2M26 40l2-2M32 40l2-2M38 40l2-2"/>
+      <path d="M19 30c-4-5-5-12-2-16 2.5-3 7-2 8 2 1 3-1 5-1 8s2 4 1 6c-1.5 3-4 3-6 0z"/>
+      <circle cx="18.5" cy="8" r="1.6"/><circle cx="23" cy="6.5" r="1.4"/><circle cx="27" cy="8" r="1.2"/><circle cx="29.5" cy="11" r="1"/>
+      <path d="M34 18h6M36 24h6M34 30h6"/>
     </>
   ),
-  door: (
+  "hydrotherapy-jets": (
     <>
-      <path d="M6.5 21V5a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v16Z" {...fillProps} />
-      <path d="M4 21h16" />
-      <path d="M6.5 21V5a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v16" />
-      <path d="M14 11.6v1.6" />
+      <path {...F} d="M8 24h32v6a8 8 0 0 1-8 8H16a8 8 0 0 1-8-8z"/>
+      <path d="M6 24h36"/><path d="M8 24v6a8 8 0 0 0 8 8h16a8 8 0 0 0 8-8v-6"/>
+      <path d="M14 38l-2 4M34 38l2 4"/>
+      <circle cx="17" cy="16" r="2.5"/><circle cx="25" cy="11" r="3"/><circle cx="32" cy="17" r="2"/><circle cx="23" cy="19" r="1.5"/>
+      <path d="M14 31h4M22 31h4M30 31h4"/>
     </>
   ),
-  chair: (
+  "air-bath": (
     <>
-      <path
-        d="M5 13a2 2 0 0 1 2 2v0h10v0a2 2 0 0 1 4 0v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2Z"
-        {...fillProps}
-      />
-      <path d="M6.5 12V6a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v6" />
-      <path d="M7 14.5v-.5h10v.5" />
-      <path d="M5 13a2 2 0 0 1 2 2v0h10v0a2 2 0 0 1 4 0v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2Z" />
-      <path d="M6 21v-1M18 21v-1" />
+      <path {...F} d="M8 30h32v2a8 8 0 0 1-8 8H16a8 8 0 0 1-8-8z"/>
+      <path d="M6 30h36"/><path d="M8 30v2a8 8 0 0 0 8 8h16a8 8 0 0 0 8-8v-2"/>
+      <circle cx="14" cy="23" r="2"/><circle cx="20" cy="16" r="2.5"/><circle cx="16" cy="9" r="1.5"/>
+      <circle cx="28" cy="22" r="1.5"/><circle cx="33" cy="15" r="2.5"/><circle cx="27" cy="8" r="2"/>
     </>
   ),
-  support: (
+  "built-in-seat": (
     <>
-      <circle cx="5" cy="12" r="2.2" {...fillProps} />
-      <circle cx="19" cy="12" r="2.2" {...fillProps} />
-      <circle cx="5" cy="12" r="2.2" />
-      <circle cx="19" cy="12" r="2.2" />
-      <path d="M7.2 12h9.6" />
-      <path d="M5 7.5v2.3M5 14.2v2.3M19 7.5v2.3M19 14.2v2.3" />
+      <path {...F} d="M22 22h20v12a6 6 0 0 1-6 6H22z"/>
+      <path d="M6 10v24a6 6 0 0 0 6 6h24a6 6 0 0 0 6-6V10"/>
+      <path d="M6 24h10a4 4 0 0 1 4 4v12"/>
+      <path d="M22 22h20"/>
+      <path d="M4 10h4M40 10h4"/>
     </>
   ),
-  water: (
+  "heated-seat": (
     <>
-      <path
-        d="M12 3s6.3 6.9 6.3 10.9a6.3 6.3 0 0 1-12.6 0C5.7 9.9 12 3 12 3Z"
-        {...fillProps}
-      />
-      <path d="M12 3s6.3 6.9 6.3 10.9a6.3 6.3 0 0 1-12.6 0C5.7 9.9 12 3 12 3Z" />
-      <path d="M9.3 13.7a2.9 2.9 0 0 0 2 2.7" />
+      <path {...F} d="M12 30h22a4 4 0 0 1 4 4v2H12z"/>
+      <path d="M12 6v26a4 4 0 0 0 4 4h22"/><path d="M12 30h22a4 4 0 0 1 4 4v8"/><path d="M16 36v6"/>
+      <path d="M22 24c-2-2.5 2-4.5 0-7s2-4.5 0-7M29 24c-2-2.5 2-4.5 0-7s2-4.5 0-7M36 24c-2-2.5 2-4.5 0-7s2-4.5 0-7"/>
     </>
   ),
-  independence: (
+  "handheld-shower": (
     <>
-      <circle cx="12.5" cy="4.9" r="2.1" {...fillProps} />
-      <circle cx="12.5" cy="4.9" r="2.1" />
-      <path d="M12.5 7.3V13" />
-      <path d="M12.5 9.6 8.9 11.6" />
-      <path d="m12.5 9.6 3.6 1.5" />
-      <path d="M16.6 11.4V20" />
-      <path d="m12.5 13-2.9 7" />
-      <path d="m12.5 13 2.3 7" />
+      <path {...F} d="M30 8a8 8 0 0 1 8 8l-12 0a8 8 0 0 1 4-8z"/>
+      <path d="M10 42V14a8 8 0 0 1 8-8h0a8 8 0 0 1 8 8"/>
+      <path d="M22 16h16a8 8 0 0 0-16 0z"/>
+      <path d="M25 22l-1 3M30 22v4M35 22l1 3M27.5 29l-.5 2M32.5 29l.5 2"/>
+      <path d="M6 42h8"/>
     </>
   ),
-  heart: (
+  "tub-to-shower": (
     <>
-      <path
-        d="M12 20.3S4.3 15.6 2.9 10.7C2 7.6 4 4.9 6.9 4.6c2-.2 3.6.8 5.1 2.9 1.5-2.1 3.1-3.1 5.1-2.9 2.9.3 4.9 3 4 6.1-1.4 4.9-9.1 9.6-9.1 9.6Z"
-        {...fillProps}
-      />
-      <path d="M12 20.3S4.3 15.6 2.9 10.7C2 7.6 4 4.9 6.9 4.6c2-.2 3.6.8 5.1 2.9 1.5-2.1 3.1-3.1 5.1-2.9 2.9.3 4.9 3 4 6.1-1.4 4.9-9.1 9.6-9.1 9.6Z" />
+      <path {...F} d="M30 10h12v28H30z"/>
+      <path d="M4 24h18v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/>
+      <path d="M7 35l-1 3M19 35l1 3"/><path d="M8 24v-9a3 3 0 0 1 6 0"/>
+      <path d="M22 18h4"/><path d="M24 15l3 3-3 3"/>
+      <path d="M30 38V10h12v28z"/>
+      <path d="M34 14h4"/><path d="M36 14v-2"/><path d="M34 18v2M36 18v3M38 18v2"/>
+      <path d="M30 30h12"/>
     </>
   ),
-  phone: (
+  "walk-in-shower": (
     <>
-      <path
-        d="M5.2 3h3.1l1.9 4.8-2.3 1.5a12.6 12.6 0 0 0 5.9 5.9l1.5-2.3 4.8 1.9v3.1a2.2 2.2 0 0 1-2.4 2.2A16.6 16.6 0 0 1 3 5.4 2.2 2.2 0 0 1 5.2 3Z"
-        {...fillProps}
-      />
-      <path d="M5.2 3h3.1l1.9 4.8-2.3 1.5a12.6 12.6 0 0 0 5.9 5.9l1.5-2.3 4.8 1.9v3.1a2.2 2.2 0 0 1-2.4 2.2A16.6 16.6 0 0 1 3 5.4 2.2 2.2 0 0 1 5.2 3Z" />
+      <path {...F} d="M24 8h16v32H24z"/>
+      <path d="M8 40h34"/><path d="M24 40V8h16v32"/>
+      <path d="M8 40V8h12"/>
+      <path d="M30 13h6"/><path d="M33 13v-3"/><path d="M30 17l-.5 2M33 17v3M36 17l.5 2"/>
+      <path d="M28 34h8"/><circle cx="32" cy="37" r="0.1"/>
+      <path d="M27 26v6"/>
     </>
   ),
-  mail: (
+  "quick-drain": (
     <>
-      <rect x="3" y="5" width="18" height="14" rx="2.2" {...fillProps} />
-      <rect x="3" y="5" width="18" height="14" rx="2.2" />
-      <path d="m3.5 7.5 8.5 5.6 8.5-5.6" />
+      <circle {...F} cx="24" cy="24" r="17"/>
+      <circle cx="24" cy="24" r="17"/>
+      <path d="M16 18h16M13 24h22M16 30h16"/>
     </>
   ),
-  check: <polyline points="20 6.5 9.5 17 4 11.5" />,
-  shield: (
+  "leakproof-door": (
     <>
-      <path d="M12 3l7.2 2.9v5c0 4.6-3.1 8.5-7.2 10.2C7.9 19.4 4.8 15.5 4.8 10.9v-5Z" {...fillProps} />
-      <path d="M12 3l7.2 2.9v5c0 4.6-3.1 8.5-7.2 10.2C7.9 19.4 4.8 15.5 4.8 10.9v-5Z" />
-      <polyline points="9 12.2 11.2 14.4 15.3 10.3" />
+      <rect {...F} x="10" y="6" width="22" height="36" rx="3"/>
+      <rect x="10" y="6" width="22" height="36" rx="3"/>
+      <rect x="14" y="10" width="14" height="28" rx="2" strokeDasharray="2 3"/>
+      <path d="M24 22v6"/>
+      <path d="M40 14c0 0-4 4.5-4 7a4 4 0 0 0 8 0c0-2.5-4-7-4-7z"/>
+      <path d="M36 34l2 2 4-4"/>
     </>
   ),
-  clock: (
+  "anti-scald": (
     <>
-      <circle cx="12" cy="12" r="8.6" {...fillProps} />
-      <circle cx="12" cy="12" r="8.6" />
-      <path d="M12 7.4V12l3.1 1.9" />
+      <path {...F} d="M20 30a6 6 0 1 0 6 0V10a3 3 0 0 0-6 0z"/>
+      <path d="M20 28.5V9a3 3 0 0 1 6 0v19.5a7 7 0 1 1-6 0z"/>
+      <circle cx="23" cy="34" r="2.5"/><path d="M23 31.5V18"/>
+      <path d="M32 12h6M32 18h4M32 24h6"/>
+      <path d="M8 14l4 4M12 14l-4 4"/>
+    </>
+  ),
+  "chromotherapy": (
+    <>
+      <path {...F} d="M17 31a11 11 0 1 1 14 0v4H17z"/>
+      <path d="M17 31a11 11 0 1 1 14 0v4H17z"/>
+      <path d="M19 39h10M21 43h6"/>
+      <path d="M24 3v3M8 9l2.5 2.5M40 9l-2.5 2.5M4 22h3.5M40.5 22H44"/>
+      <path d="M21 26l3-6 3 6"/>
+    </>
+  ),
+  "easy-controls": (
+    <>
+      <circle {...F} cx="24" cy="26" r="14"/>
+      <circle cx="24" cy="26" r="14"/><circle cx="24" cy="26" r="4"/>
+      <path d="M24 22v-7"/>
+      <path d="M8 12l3 3M40 12l-3 3M24 4v4"/>
+    </>
+  ),
+  "one-day-install": (
+    <>
+      <rect {...F} x="6" y="12" width="30" height="8"/>
+      <rect x="6" y="10" width="30" height="28" rx="3"/>
+      <path d="M6 20h30"/><path d="M13 6v8M29 6v8"/>
+      <path d="M17 26l4-2v10"/><path d="M17 34h8"/>
+      <path d="M34 32l8 8"/><path d="M42 30a5 5 0 0 1-6.5 6.5L33 39a2 2 0 0 1-3-3l2.5-2.5A5 5 0 0 1 39 27l-3 3 1 2 2 1z"/>
+    </>
+  ),
+  "certified-installer": (
+    <>
+      <path {...F} d="M14 18a10 10 0 0 1 20 0z"/>
+      <path d="M12 18h24"/><path d="M14 18a10 10 0 0 1 20 0"/><path d="M24 8v4"/>
+      <path d="M16 18a8 8 0 0 0 16 0"/>
+      <path d="M8 42a16 16 0 0 1 32 0"/>
+      <path d="M24 34l2 2 4-4"/>
+    </>
+  ),
+  "lifetime-warranty": (
+    <>
+      <path {...F} d="M24 4l16 6v12c0 10-7 17-16 21-9-4-16-11-16-21V10z"/>
+      <path d="M24 4l16 6v12c0 10-7 17-16 21-9-4-16-11-16-21V10z"/>
+      <path d="M24 24c-2-2.5-4-4-6-4a4 4 0 0 0 0 8c2 0 4-1.5 6-4s4-4 6-4a4 4 0 0 1 0 8c-2 0-4-1.5-6-4z"/>
+    </>
+  ),
+  "transferable-warranty": (
+    <>
+      <path {...F} d="M18 6l11 4v8c0 7-5 12-11 15-6-3-11-8-11-15v-8z"/>
+      <path d="M18 6l11 4v8c0 7-5 12-11 15-6-3-11-8-11-15v-8z"/>
+      <path d="M14 19l3 3 5-5"/>
+      <path d="M30 36h12M38 32l4 4-4 4"/>
+      <path d="M30 30l4-4M36 26l4 4M32 28v-.01"/>
+    </>
+  ),
+  "free-assessment": (
+    <>
+      <path {...F} d="M6 22L22 8l16 14v18H6z"/>
+      <path d="M4 22L22 6l18 16"/><path d="M8 19v21h11"/>
+      <rect x="24" y="24" width="16" height="20" rx="2"/>
+      <path d="M28 24v-2h8v2"/>
+      <path d="M28 31l2 2 4-4M28 38h8"/>
+    </>
+  ),
+  "no-pressure": (
+    <>
+      <path {...F} d="M6 22l8-6 6 2 6-4 8 2 8 6-12 12z"/>
+      <path d="M4 22l10-8 6 2"/><path d="M44 22l-10-8-8 2-8 6a2.5 2.5 0 0 0 3.5 3.5L27 21"/>
+      <path d="M10 26l10 10a2.5 2.5 0 0 0 3.5-3.5"/><path d="M14 30l8 8a2.5 2.5 0 0 0 3.5-3.5M27 21l11 11"/>
+      <path d="M18 34l3 3"/><path d="M34 28l-8 8"/>
+    </>
+  ),
+  "cancellation-10-day": (
+    <>
+      <rect {...F} x="6" y="12" width="36" height="8"/>
+      <rect x="6" y="10" width="36" height="30" rx="3"/>
+      <path d="M6 20h36"/><path d="M14 6v8M34 6v8"/>
+      <path d="M15 27l3-2v10"/>
+      <rect x="23" y="25" width="8" height="10" rx="4"/>
+      <path d="M35 30l2 2 3-4"/>
+    </>
+  ),
+  "transparent-pricing": (
+    <>
+      <path {...F} d="M6 8h16l20 20-14 14L8 22z"/>
+      <path d="M22 6H8a2 2 0 0 0-2 2v14l20 20a2 2 0 0 0 3 0l13-13a2 2 0 0 0 0-3z"/>
+      <circle cx="14" cy="14" r="3"/>
+      <path d="M28 20c-1-1.5-3-2-4.5-1.2s-1.5 3 .5 4 3 2.5 1.5 4-4 .8-5-1"/><path d="M27 18l1-1.5M21 27.5l-1 1.5"/>
+    </>
+  ),
+  "government-funding": (
+    <>
+      <path {...F} d="M6 18h36v4H6z"/>
+      <path d="M4 18L24 6l20 12z"/><path d="M6 22h36"/>
+      <path d="M10 22v14M18 22v14M30 22v14M38 22v14"/>
+      <path d="M4 40h40M6 36h36"/>
+      <path d="M24 11v4"/>
+    </>
+  ),
+  "home-equity-loan": (
+    <>
+      <path {...F} d="M8 22L24 8l16 14v20H8z"/>
+      <path d="M4 24L24 6l20 18"/><path d="M8 20v22h32V20"/>
+      <path d="M28 21c-1-1.5-3-2-4.5-1.2s-1.5 3 .5 4 3 2.5 1.5 4-4 .8-5-1"/><path d="M24 17v2M24 30v2"/>
+      <path d="M20 42v-6h8v6"/>
+    </>
+  ),
+  "tax-credit": (
+    <>
+      <path {...F} d="M10 4h22l6 6v34l-4-3-4 3-4-3-4 3-4-3-4 3-4-3z"/>
+      <path d="M10 4h22l6 6v34l-4-3-4 3-4-3-4 3-4-3-4 3-4-3V4z"/>
+      <path d="M32 4v6h6"/>
+      <path d="M16 14h10M16 20h14"/>
+      <path d="M18 34l10-8M19 27h0M27 33h0"/><circle cx="19" cy="27" r="1.5"/><circle cx="27" cy="33" r="1.5"/>
+    </>
+  ),
+  "financing": (
+    <>
+      <rect {...F} x="4" y="12" width="34" height="22" rx="3"/>
+      <rect x="4" y="12" width="34" height="22" rx="3"/>
+      <path d="M4 19h34"/><path d="M9 28h8"/>
+      <circle cx="36" cy="34" r="8"/><path d="M36 30v4l3 2"/>
+    </>
+  ),
+  "caregiver": (
+    <>
+      <path {...F} d="M24 42s-16-9-16-20a8 8 0 0 1 16-4 8 8 0 0 1 16 4c0 11-16 20-16 20z"/>
+      <path d="M24 42s-16-9-16-20a8 8 0 0 1 16-4 8 8 0 0 1 16 4c0 11-16 20-16 20z"/>
+      <circle cx="19" cy="22" r="2.5"/><circle cx="29" cy="20" r="2.5"/>
+      <path d="M14 32a5 5 0 0 1 10 0M24 30a5 5 0 0 1 10 0"/>
+    </>
+  ),
+  "fall-prevention": (
+    <>
+      <path {...F} d="M24 4l16 6v12c0 10-7 17-16 21-9-4-16-11-16-21V10z"/>
+      <path d="M24 4l16 6v12c0 10-7 17-16 21-9-4-16-11-16-21V10z"/>
+      <circle cx="24" cy="14" r="3"/>
+      <path d="M24 17v10M24 27l-4 7M24 27l4 7M18 21l6 2 6-2"/>
+    </>
+  ),
+  "aging-in-place": (
+    <>
+      <path {...F} d="M8 22L24 8l16 14v20H8z"/>
+      <path d="M4 24L24 6l20 18"/><path d="M8 20v22h32V20"/>
+      <circle cx="22" cy="23" r="3"/>
+      <path d="M22 26v8l-3 6M22 34l3 6M22 29l-4 2M22 29l5 1 2 10"/>
+    </>
+  ),
+  "local-alberta": (
+    <>
+      <path {...F} d="M24 4l3 7 4-2-1 8 6-5 1 4 5-1-2 6 3 2-9 7 1 4-8-1-1 8h-4l-1-8-8 1 1-4-9-7 3-2-2-6 5 1 1-4 6 5-1-8 4 2z"/>
+      <path d="M24 4l3 7 4-2-1 8 6-5 1 4 5-1-2 6 3 2-9 7 1 4-8-1v8h-4v-8l-8 1 1-4-9-7 3-2-2-6 5 1 1-4 6 5-1-8 4 2z"/>
+    </>
+  ),
+  "senior-discount": (
+    <>
+      <circle {...F} cx="24" cy="24" r="18"/>
+      <circle cx="24" cy="24" r="18"/>
+      <path d="M17 31l14-14"/><circle cx="18" cy="18" r="2.5"/><circle cx="30" cy="30" r="2.5"/>
+    </>
+  ),
+  "phone": (
+    <>
+      <path {...F} d="M10 6h7l3 9-4 3a24 24 0 0 0 14 14l3-4 9 3v7a4 4 0 0 1-4 4C21 42 6 27 6 10a4 4 0 0 1 4-4z"/>
+      <path d="M10 6h7l3 9-4 3a24 24 0 0 0 14 14l3-4 9 3v7a4 4 0 0 1-4 4C21 42 6 27 6 10a4 4 0 0 1 4-4z"/>
+      <path d="M28 6a14 14 0 0 1 14 14M28 13a7 7 0 0 1 7 7"/>
+    </>
+  ),
+  "email": (
+    <>
+      <rect {...F} x="4" y="10" width="40" height="28" rx="3"/>
+      <rect x="4" y="10" width="40" height="28" rx="3"/>
+      <path d="M5 12l19 15 19-15"/>
+    </>
+  ),
+  "location": (
+    <>
+      <path {...F} d="M24 44s14-13 14-25a14 14 0 0 0-28 0c0 12 14 25 14 25z"/>
+      <path d="M24 44s14-13 14-25a14 14 0 0 0-28 0c0 12 14 25 14 25z"/>
+      <path d="M17 20l7-6 7 6M19 18v7h10v-7"/>
+    </>
+  ),
+  "hours": (
+    <>
+      <circle {...F} cx="24" cy="24" r="18"/>
+      <circle cx="24" cy="24" r="18"/><path d="M24 12v12l8 5"/>
+    </>
+  ),
+  "star-review": (
+    <>
+      <path {...F} d="M24 4l6 12.5 13.5 2-10 9.5 2.5 13.5L24 35l-12 6.5 2.5-13.5-10-9.5 13.5-2z"/>
+      <path d="M24 4l6 12.5 13.5 2-10 9.5 2.5 13.5L24 35l-12 6.5 2.5-13.5-10-9.5 13.5-2z"/>
+    </>
+  ),
+  "quote-request": (
+    <>
+      <path {...F} d="M8 4h20l8 8v32H8z"/>
+      <path d="M8 4h20l8 8v32H8z"/><path d="M28 4v8h8"/>
+      <path d="M14 20h16M14 26h16M14 32h8"/>
+      <path d="M44 22L30 36l-4 1 1-4 14-14z"/>
+    </>
+  ),
+  "check": (
+    <>
+      <circle {...F} cx="24" cy="24" r="18"/><circle cx="24" cy="24" r="18"/><path d="M16 24l6 6 11-12"/>
     </>
   ),
   "arrow-right": (
     <>
-      <path d="M5 12h14" />
-      <path d="m13 6 6 6-6 6" />
+      <path d="M8 24h32M28 12l12 12-12 12"/>
     </>
   ),
-  menu: (
+  "menu": (
     <>
-      <path d="M4 7h16" />
-      <path d="M4 12h16" />
-      <path d="M4 17h16" />
+      <path d="M8 14h32M8 24h32M8 34h32"/>
     </>
   ),
-  close: (
+  "close": (
     <>
-      <path d="M6 6l12 12" />
-      <path d="M18 6 6 18" />
+      <path d="M12 12l24 24M36 12L12 36"/>
     </>
   ),
-  star: (
+  "chevron-down": (
     <>
-      <path
-        d="M12 3.3 14.7 8.8l6 .9-4.3 4.2 1 6L12 17l-5.4 2.9 1-6L3.3 9.7l6-.9L12 3.3Z"
-        fill="currentColor"
-        stroke="none"
-        opacity="0.25"
-      />
-      <path d="M12 3.3 14.7 8.8l6 .9-4.3 4.2 1 6L12 17l-5.4 2.9 1-6L3.3 9.7l6-.9L12 3.3Z" />
-    </>
-  ),
-  camera: (
-    <>
-      <path
-        d="M4 8h3.2l1.9-2.8h5.8L16.8 8H20a1 1 0 0 1 1 1v9.5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z"
-        {...fillProps}
-      />
-      <path d="M4 8h3.2l1.9-2.8h5.8L16.8 8H20a1 1 0 0 1 1 1v9.5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z" />
-      <circle cx="12" cy="13.2" r="3.4" fill="#fff" fillOpacity="0.85" />
-      <circle cx="12" cy="13.2" r="3.4" />
-    </>
-  ),
-  dollar: (
-    <>
-      <circle cx="12" cy="12" r="8.8" {...fillProps} />
-      <circle cx="12" cy="12" r="8.8" />
-      <path d="M12 6.8v10.4" />
-      <path d="M14.9 8.9c-.7-.9-1.7-1.3-2.9-1.3-1.6 0-2.9.9-2.9 2.2 0 2.8 5.8 1.6 5.8 4.4 0 1.3-1.3 2.2-2.9 2.2-1.2 0-2.2-.4-2.9-1.3" />
-    </>
-  ),
-  tub: (
-    <>
-      <path d="M4 12v3.4A4.6 4.6 0 0 0 8.6 20h6.8a4.6 4.6 0 0 0 4.6-4.6V12Z" {...fillProps} />
-      <path d="M3 12h18" />
-      <path d="M4 12v3.4A4.6 4.6 0 0 0 8.6 20h6.8a4.6 4.6 0 0 0 4.6-4.6V12" />
-      <path d="M6.5 12V6.4A2.4 2.4 0 0 1 8.9 4h.3a2.3 2.3 0 0 1 2.3 2.2" />
-      <path d="M11.5 8.6h.01M11.5 10.4h.01" />
-      <path d="m7 20-.9 1.8M17 20l.9 1.8" />
+      <path d="M12 18l12 12 12-12"/>
     </>
   ),
 };
@@ -233,14 +378,15 @@ interface IconProps extends SVGProps<SVGSVGElement> {
 }
 
 export default function Icon({ name, title, ...props }: IconProps) {
+  const key = (name in aliases ? aliases[name as keyof typeof aliases] : name) as (typeof iconNames)[number];
   return (
     <svg
-      viewBox="0 0 24 24"
+      viewBox="0 0 48 48"
       width="24"
       height="24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.8"
+      strokeWidth="3"
       strokeLinecap="round"
       strokeLinejoin="round"
       role={title ? "img" : "presentation"}
@@ -249,7 +395,7 @@ export default function Icon({ name, title, ...props }: IconProps) {
       {...props}
     >
       {title ? <title>{title}</title> : null}
-      {paths[name]}
+      {paths[key]}
     </svg>
   );
 }

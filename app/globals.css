@@ -117,6 +117,7 @@ h4 {
   color: var(--navy);
   font-weight: 800;
   letter-spacing: -0.015em;
+  text-wrap: balance;
 }
 
 h1 { font-size: var(--fs-h1); }
@@ -193,8 +194,14 @@ li { margin-bottom: 0.35em; }
   padding-inline: var(--gutter);
 }
 .container--narrow { max-width: var(--container-narrow); }
+.container--wide { max-width: 1360px; }
 
 main { flex: 1 0 auto; }
+
+/* Room for the phone-only quick-contact bar pinned to the bottom. */
+@media (max-width: 720px) {
+  body { padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
+}
 
 .section {
   padding-block: var(--section-y);
@@ -378,7 +385,7 @@ main { flex: 1 0 auto; }
   margin-bottom: 1rem;
   flex-shrink: 0;
 }
-.icon-badge svg { width: 30px; height: 30px; }
+.icon-badge svg { width: 34px; height: 34px; }
 .section--navy .icon-badge {
   background: rgba(255, 255, 255, 0.12);
   color: #edcf9c;

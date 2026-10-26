@@ -40,7 +40,10 @@ export default function InstallationPage() {
                   {s.step}
                 </span>
                 <div className={styles.body}>
-                  <h2 className={styles.title}>{s.title}</h2>
+                  <h2 className={styles.title}>
+                    <Icon name={s.icon} width={30} height={30} className={styles.stepIcon} />
+                    {s.title}
+                  </h2>
                   <p>{s.text}</p>
                 </div>
               </li>
@@ -60,7 +63,7 @@ export default function InstallationPage() {
           <div className="grid grid--3">
             <div className="card">
               <span className="icon-badge" aria-hidden="true">
-                <Icon name="clock" />
+                <Icon name="hours" />
               </span>
               <h3>On your schedule</h3>
               <p>
@@ -70,7 +73,7 @@ export default function InstallationPage() {
             </div>
             <div className="card">
               <span className="icon-badge" aria-hidden="true">
-                <Icon name="home" />
+                <Icon name="aging-in-place" />
               </span>
               <h3>Respect for your home</h3>
               <p>
@@ -80,7 +83,7 @@ export default function InstallationPage() {
             </div>
             <div className="card">
               <span className="icon-badge" aria-hidden="true">
-                <Icon name="shield" />
+                <Icon name="transferable-warranty" />
               </span>
               <h3>We stand behind our work</h3>
               <p>

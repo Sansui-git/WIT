@@ -17,31 +17,31 @@ import styles from "./home.module.css";
 
 /* Hero trust strip — factual only */
 const heroTrust: { icon: IconName; label: string }[] = [
-  { icon: "map-pin", label: "Local Edmonton service" },
-  { icon: "wrench", label: "Professional installation" },
-  { icon: "dollar", label: "Financing options" },
-  { icon: "home", label: "Free in-home assessments" },
+  { icon: "location", label: "Local Edmonton service" },
+  { icon: "certified-installer", label: "Professional installation" },
+  { icon: "government-funding", label: "Financing & funding help" },
+  { icon: "free-assessment", label: "Free in-home assessments" },
 ];
 
 /* Safer bathing feature cards */
 const saferFeatures: { icon: IconName; title: string; text: string }[] = [
   {
-    icon: "door",
+    icon: "walk-in-tub",
     title: "Easy-entry door",
     text: "Step in at nearly floor level through a watertight door — no climbing over a high tub wall.",
   },
   {
-    icon: "chair",
+    icon: "built-in-seat",
     title: "Built-in comfort seat",
     text: "Bathe seated at a natural height on a comfortable, contoured seat.",
   },
   {
-    icon: "support",
+    icon: "grab-bar",
     title: "Safety grab bars",
     text: "Securely mounted bars give you something sturdy to hold at every step.",
   },
   {
-    icon: "check",
+    icon: "low-step-entry",
     title: "Low step-in access",
     text: "A low threshold and slip-resistant surfaces make getting in and out easier.",
   },
@@ -57,32 +57,57 @@ const audiences: {
 }[] = [
   {
     imgKey: "forSeniors",
-    icon: "independence",
+    icon: "aging-in-place",
     title: "For Seniors",
     text: "Stay independent and enjoy the comfort of a safe, easy bath in the home you love.",
     imgLabel: "Photo: senior enjoying a safe bath",
   },
   {
     imgKey: "forAdultChildren",
-    icon: "heart",
+    icon: "caregiver",
     title: "For Adult Children",
     text: "Give yourself peace of mind knowing Mom or Dad can bathe safely at home.",
     imgLabel: "Photo: adult child with parent",
   },
   {
     imgKey: "forCaregivers",
-    icon: "chat",
+    icon: "fall-prevention",
     title: "For Caregivers",
     text: "Make bathing assistance easier, safer, and more comfortable for everyone.",
     imgLabel: "Photo: caregiver with client",
   },
 ];
 
-/* Installation gallery slots */
+/* Installation gallery slots. The gallery only appears once at least one
+   before/after pair has real photos in lib/site.ts → siteImages. */
 const gallerySlots = [
   { before: "install1Before", after: "install1After" },
   { before: "install2Before", after: "install2After" },
   { before: "install3Before", after: "install3After" },
+].filter((g) => siteImages[g.before] && siteImages[g.after]);
+
+/* What every customer can count on (shown until real reviews are added) */
+const promises: { icon: IconName; title: string; text: string }[] = [
+  {
+    icon: "transparent-pricing",
+    title: "A written quote first",
+    text: "You see the full price in writing before any work starts. No surprises.",
+  },
+  {
+    icon: "no-pressure",
+    title: "No pressure, ever",
+    text: "Take all the time you need and include your family. We never push.",
+  },
+  {
+    icon: "certified-installer",
+    title: "Our own installers",
+    text: "The people who plan your project are the people who install it.",
+  },
+  {
+    icon: "transferable-warranty",
+    title: "We stand behind it",
+    text: "Questions after installation? Call us and we will help.",
+  },
 ];
 
 export default function HomePage() {
@@ -126,7 +151,7 @@ export default function HomePage() {
             {heroTrust.map((t) => (
               <li key={t.label}>
                 <span className={styles.trustIcon} aria-hidden="true">
-                  <Icon name={t.icon} width={24} height={24} />
+                  <Icon name={t.icon} width={30} height={30} />
                 </span>
                 <span>{t.label}</span>
               </li>
@@ -181,13 +206,16 @@ export default function HomePage() {
                   src={siteImages[a.imgKey]}
                   alt={a.imgLabel.replace("Photo: ", "")}
                   label={a.imgLabel}
+                  icon={a.icon}
                   aspect="16 / 10"
                   sizes="(max-width: 620px) 100vw, 33vw"
                 />
                 <div className={styles.audienceBody}>
-                  <span className={styles.audienceIcon} aria-hidden="true">
-                    <Icon name={a.icon} width={22} height={22} />
-                  </span>
+                  {siteImages[a.imgKey] && (
+                    <span className={styles.audienceIcon} aria-hidden="true">
+                      <Icon name={a.icon} width={22} height={22} />
+                    </span>
+                  )}
                   <h3>{a.title}</h3>
                   <p>{a.text}</p>
                 </div>
@@ -246,14 +274,14 @@ export default function HomePage() {
       </section>
 
       {/* ---- Installations gallery ------------------------------------------ */}
+      {gallerySlots.length > 0 && (
       <section className="section section--sand" aria-labelledby="gallery-heading">
         <div className="container">
           <div className="section-head section-head--center">
             <h2 id="gallery-heading">Our walk-in bath installations</h2>
             <div className="rule" />
             <p className="lead">
-              Before-and-after photos from our Edmonton-area projects will
-              appear here as we complete them.
+              Before-and-after photos from real Edmonton-area projects.
             </p>
           </div>
           <div className="grid grid--3">
@@ -284,7 +312,7 @@ export default function HomePage() {
                   </div>
                 </div>
                 <p className={styles.galleryCaption}>
-                  <Icon name="map-pin" width={17} height={17} aria-hidden="true" />
+                  <Icon name="location" width={17} height={17} aria-hidden="true" />
                   Edmonton area
                 </p>
               </div>
@@ -292,38 +320,29 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      )}
 
-      {/* ---- Reviews (honest, ready-state) ----------------------------------- */}
-      <section className="section section--cream" aria-labelledby="reviews-heading">
+      {/* ---- Our promise --------------------------------------------------- */}
+      <section className="section section--cream" aria-labelledby="promise-heading">
         <div className="container">
-          <div className={styles.reviewsLayout}>
-            <div>
-              <h2 id="reviews-heading">What customers are saying</h2>
-              <div className="rule" />
-              <ul className={`checklist ${styles.reviewPoints}`}>
-                <li>Clear communication and no-pressure advice</li>
-                <li>Professional, respectful installers</li>
-                <li>Quality products and workmanship</li>
-              </ul>
-              <p className={styles.reviewNote}>
-                We share verified customer reviews as we receive them — ask us
-                for references any time.
-              </p>
-            </div>
-            <div className={styles.reviewCards}>
-              {[
-                "Your neighbours' reviews will appear here after our first installations.",
-                "Every review we publish is from a real, verified customer.",
-              ].map((text, i) => (
-                <figure key={i} className={`card ${styles.reviewCard}`}>
-                  <div className={styles.reviewMarks} aria-hidden="true">
-                    &ldquo;
-                  </div>
-                  <blockquote>{text}</blockquote>
-                  <figcaption>Verified reviews — coming soon</figcaption>
-                </figure>
-              ))}
-            </div>
+          <div className="section-head section-head--center">
+            <h2 id="promise-heading">What you can count on</h2>
+            <div className="rule" />
+            <p className="lead">
+              Buying a walk-in tub should feel calm and clear. Here is how we
+              work with every family.
+            </p>
+          </div>
+          <div className="grid grid--4">
+            {promises.map((p) => (
+              <div key={p.title} className={`card ${styles.promiseCard}`}>
+                <span className="icon-badge" aria-hidden="true">
+                  <Icon name={p.icon} />
+                </span>
+                <h3>{p.title}</h3>
+                <p>{p.text}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -341,6 +360,18 @@ export default function HomePage() {
                 <li>No hidden fees or surprise charges</li>
                 <li>Financing options to spread the cost</li>
               </ul>
+              <div className={styles.fundingNote}>
+                <span className={styles.fundingIcon} aria-hidden="true">
+                  <Icon name="government-funding" width={30} height={30} />
+                </span>
+                <p>
+                  <strong>Alberta seniors may pay much less.</strong> The
+                  province&apos;s SHARP program lists walk-in tubs by name and
+                  offers a low-interest loan with no monthly payments, and the
+                  federal Home Accessibility Tax Credit can return up to $3,000.{" "}
+                  <Link href="/financing">See funding programs</Link>
+                </p>
+              </div>
             </div>
             <div className={styles.priceCard}>
               <p className={styles.priceLabel}>Complete installed projects</p>
@@ -381,7 +412,7 @@ export default function HomePage() {
             <ul className={styles.areaChips} aria-label="Communities we serve">
               {serviceAreas.slice(0, 12).map((area) => (
                 <li key={area}>
-                  <Icon name="map-pin" width={18} height={18} aria-hidden="true" />
+                  <Icon name="location" width={18} height={18} aria-hidden="true" />
                   {area}
                 </li>
               ))}

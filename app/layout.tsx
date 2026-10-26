@@ -2,9 +2,11 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import MobileActionBar from "@/components/MobileActionBar";
 import JsonLd from "@/components/JsonLd";
 import { siteConfig } from "@/lib/site";
 import { localBusinessSchema, websiteSchema } from "@/lib/structuredData";
+import { shareImage } from "@/lib/seo";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -31,7 +33,15 @@ export const metadata: Metadata = {
     siteName: siteConfig.companyName,
     title: `${siteConfig.companyName} | Walk-In Bathtubs in Edmonton`,
     description: siteConfig.shortDescription,
+    images: [shareImage],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: `${siteConfig.companyName} | Walk-In Bathtubs in Edmonton`,
+    description: siteConfig.shortDescription,
+    images: [shareImage.url],
+  },
+  formatDetection: { telephone: true, email: true, address: false },
   robots: {
     index: true,
     follow: true,
@@ -40,7 +50,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#1f3a5f",
+  themeColor: "#1c3d8f",
   width: "device-width",
   initialScale: 1,
 };
@@ -61,6 +71,7 @@ export default function RootLayout({
         <Header />
         <main id="main">{children}</main>
         <Footer />
+        <MobileActionBar />
       </body>
     </html>
   );

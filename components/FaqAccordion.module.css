@@ -49,9 +49,15 @@
   color: var(--brass-dark);
   flex-shrink: 0;
 }
+.icon svg {
+  transition: transform 0.2s ease;
+}
 .itemOpen .icon {
   background: var(--brass);
   color: #24170a;
+}
+.itemOpen .icon svg {
+  transform: rotate(180deg);
 }
 .panel {
   padding: 0 1.4rem 1.4rem;

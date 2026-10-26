@@ -79,9 +79,9 @@ function buildEmail(lead: Lead): { subject: string; text: string; html: string }
   const text = present.map(([k, v]) => `${k}: ${v}`).join("\n");
 
   const html = `
-    <div style="font-family: Arial, sans-serif; color: #22303f; max-width: 560px;">
-      <h2 style="color: #1f3a5f; margin: 0 0 4px;">New consultation request</h2>
-      <p style="color: #46586a; margin: 0 0 16px;">
+    <div style="font-family: Arial, sans-serif; color: #1f2937; max-width: 560px;">
+      <h2 style="color: #1c3d8f; margin: 0 0 4px;">New consultation request</h2>
+      <p style="color: #47546a; margin: 0 0 16px;">
         Submitted through ${escapeHtml(siteConfig.companyName)} website.
       </p>
       <table style="width: 100%; border-collapse: collapse;">
@@ -89,17 +89,17 @@ function buildEmail(lead: Lead): { subject: string; text: string; html: string }
           .map(
             ([k, v]) => `
           <tr>
-            <td style="padding: 8px 12px; background: #f5efe6; border: 1px solid #ddd2c0; font-weight: bold; white-space: nowrap; vertical-align: top;">${escapeHtml(
+            <td style="padding: 8px 12px; background: #eef3fb; border: 1px solid #dbe4f0; font-weight: bold; white-space: nowrap; vertical-align: top;">${escapeHtml(
               k
             )}</td>
-            <td style="padding: 8px 12px; border: 1px solid #ddd2c0;">${escapeHtml(
+            <td style="padding: 8px 12px; border: 1px solid #dbe4f0;">${escapeHtml(
               v
             ).replace(/\n/g, "<br>")}</td>
           </tr>`
           )
           .join("")}
       </table>
-      <p style="color: #46586a; font-size: 13px; margin-top: 16px;">
+      <p style="color: #47546a; font-size: 13px; margin-top: 16px;">
         Reply directly to this email to respond${
           lead.email ? ` to ${escapeHtml(lead.email)}` : ""
         }.
@@ -159,7 +159,7 @@ export async function POST(request: Request) {
   const errors: string[] = [];
   if (!name) errors.push("name");
   if (!phone || phone.replace(/[^0-9]/g, "").length < 7) errors.push("phone");
-  if (!email || !isEmail(email)) errors.push("email");
+  if (email && !isEmail(email)) errors.push("email");
   if (postal && !/^[A-Za-z]\d[A-Za-z]\s?\d[A-Za-z]\d$/.test(postal)) {
     errors.push("postal");
   }

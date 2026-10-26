@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Icon from "./Icon";
+import Icon, { type IconName } from "./Icon";
 import styles from "./ImageSlot.module.css";
 
 /**
@@ -8,13 +8,16 @@ import styles from "./ImageSlot.module.css";
  * Wire real photos in lib/site.ts → siteImages:
  *   1. Put the file in /public/images (e.g. /public/images/hero.jpg)
  *   2. Set the entry, e.g. hero: "/images/hero.jpg"
- * Until then, a clean labelled placeholder renders in its place.
+ * Until then, a branded illustration panel (one of our custom icons on a
+ * soft gradient) renders in its place, so the page never looks unfinished.
  */
 interface ImageSlotProps {
   src?: string;
   alt: string;
-  /** Short label shown on the placeholder, e.g. "Photo: walk-in tub" */
+  /** Note for whoever adds photos later, e.g. "Photo: walk-in tub". Not shown. */
   label?: string;
+  /** Icon drawn on the panel while there is no photo. */
+  icon?: IconName;
   /** CSS aspect ratio, e.g. "4 / 3", "16 / 10", "1 / 1" */
   aspect?: string;
   /** Rounded corners */
@@ -26,7 +29,7 @@ interface ImageSlotProps {
 export default function ImageSlot({
   src,
   alt,
-  label,
+  icon = "walk-in-tub",
   aspect = "4 / 3",
   rounded = true,
   priority = false,
@@ -48,10 +51,10 @@ export default function ImageSlot({
         />
       ) : (
         <div className={styles.placeholder} role="img" aria-label={alt}>
+          <span className={styles.bubbles} aria-hidden="true" />
           <span className={styles.badge} aria-hidden="true">
-            <Icon name="camera" width={26} height={26} />
+            <Icon name={icon} width={64} height={64} strokeWidth={2.4} />
           </span>
-          {label && <span className={styles.label}>{label}</span>}
         </div>
       )}
     </div>

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Safety grab bar"><title>Safety grab bar</title><g transform="rotate(-30 24 24)">
+<circle fill="currentColor" fill-opacity=".16" stroke="none" cx="8" cy="24" r="5"/><circle fill="currentColor" fill-opacity=".16" stroke="none" cx="40" cy="24" r="5"/>
+<circle cx="8" cy="24" r="5"/><circle cx="40" cy="24" r="5"/>
+<rect x="8" y="21" width="32" height="6" rx="3"/>
+<path d="M16 21v6M32 21v6" stroke-opacity=".5"/></g></svg>

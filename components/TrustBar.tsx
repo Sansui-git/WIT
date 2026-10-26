@@ -1,5 +1,5 @@
 import { trustIndicators } from "@/lib/site";
-import Icon, { type IconName } from "./Icon";
+import Icon from "./Icon";
 import styles from "./TrustBar.module.css";
 
 export default function TrustBar() {
@@ -10,7 +10,7 @@ export default function TrustBar() {
           {trustIndicators.map((item) => (
             <li key={item.title} className={styles.item}>
               <span className="icon-badge" aria-hidden="true">
-                <Icon name={item.icon as IconName} />
+                <Icon name={item.icon} />
               </span>
               <div>
                 <h3 className={styles.title}>{item.title}</h3>
