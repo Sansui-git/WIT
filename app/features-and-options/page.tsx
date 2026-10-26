@@ -49,6 +49,9 @@ export default function FeaturesPage() {
           <div className="grid grid--3">
             {safetyFeatures.map((f) => (
               <div key={f.title} className="card card--accent">
+                <span className="icon-badge" aria-hidden="true">
+                  <Icon name={f.icon} />
+                </span>
                 <h3>{f.title}</h3>
                 <p>{f.text}</p>
               </div>
@@ -73,6 +76,9 @@ export default function FeaturesPage() {
           <div className="grid grid--3">
             {comfortFeatures.map((f) => (
               <div key={f.title} className="card">
+                <span className="icon-badge" aria-hidden="true">
+                  <Icon name={f.icon} />
+                </span>
                 <h3>{f.title}</h3>
                 <p>{f.text}</p>
               </div>
@@ -85,7 +91,7 @@ export default function FeaturesPage() {
       <section className="section section--band">
         <div className="container container--narrow text-center">
           <span className="icon-badge" aria-hidden="true" style={{ marginInline: "auto" }}>
-            <Icon name="chat" />
+            <Icon name="free-assessment" />
           </span>
           <h2>Not sure which options you need?</h2>
           <p className="lead">

@@ -41,7 +41,7 @@ export default function ServiceAreasPage() {
           <ul className={styles.areaGrid} aria-label="Service area communities">
             {serviceAreas.map((area) => (
               <li key={area} className={styles.area}>
-                <Icon name="map-pin" width={20} height={20} aria-hidden="true" />
+                <Icon name="location" width={20} height={20} aria-hidden="true" />
                 {area}
               </li>
             ))}

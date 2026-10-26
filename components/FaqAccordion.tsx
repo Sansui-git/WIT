@@ -37,7 +37,7 @@ export default function FaqAccordion({ items, defaultOpen = 0 }: FaqAccordionPro
               >
                 <span>{item.question}</span>
                 <span className={styles.icon} aria-hidden="true">
-                  <Icon name={isOpen ? "close" : "arrow-right"} width={22} height={22} />
+                  <Icon name="chevron-down" width={22} height={22} />
                 </span>
               </button>
             </h3>

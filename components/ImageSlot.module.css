@@ -10,33 +10,40 @@
 .img {
   object-fit: cover;
 }
+
+/* Illustration panel shown until a real photo is added */
 .placeholder {
   position: absolute;
   inset: 0;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.6rem;
-  padding: 1rem;
-  text-align: center;
-  border: 2px dashed var(--border-strong);
   border-radius: inherit;
+  background: linear-gradient(150deg, #e7eefb 0%, #d9e5f7 55%, #eef3fb 100%);
+}
+.bubbles {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 78% 24%, rgba(28, 61, 143, 0.1) 0 5%, transparent 5.5%),
+    radial-gradient(circle at 86% 40%, rgba(28, 61, 143, 0.08) 0 3%, transparent 3.5%),
+    radial-gradient(circle at 70% 46%, rgba(240, 180, 41, 0.22) 0 2.4%, transparent 2.9%),
+    radial-gradient(circle at 16% 78%, rgba(28, 61, 143, 0.08) 0 4%, transparent 4.5%),
+    radial-gradient(circle at 28% 88%, rgba(240, 180, 41, 0.2) 0 2%, transparent 2.5%);
 }
 .badge {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 54px;
-  height: 54px;
+  width: clamp(96px, 34%, 132px);
+  aspect-ratio: 1;
   border-radius: 50%;
   background: #fff;
   color: var(--navy);
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 10px 30px rgba(18, 41, 94, 0.14);
 }
-.label {
-  font-size: 0.92rem;
-  font-weight: 600;
-  color: var(--ink-soft);
-  max-width: 26ch;
+.badge svg {
+  width: 56%;
+  height: 56%;
 }

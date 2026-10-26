@@ -10,7 +10,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/privacy-policy",
   ];
 
-  const lastModified = new Date("2026-01-15");
+  // Date of the last real content update. Bump it when pages change.
+  const lastModified = new Date("2026-10-26");
 
   return paths.map((path) => ({
     url: `${base}${path === "/" ? "" : path}`,

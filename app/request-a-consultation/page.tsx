@@ -44,7 +44,7 @@ export default function RequestPage() {
                   {phoneDisplay}
                 </a>
                 <a href={emailLink} className={styles.emailLink}>
-                  <Icon name="mail" width={20} height={20} aria-hidden="true" />
+                  <Icon name="email" width={20} height={20} aria-hidden="true" />
                   {siteConfig.email}
                 </a>
               </div>
@@ -71,7 +71,7 @@ export default function RequestPage() {
                   ))}
                 </ul>
                 <p className={styles.serving}>
-                  <Icon name="map-pin" width={18} height={18} aria-hidden="true" />
+                  <Icon name="location" width={18} height={18} aria-hidden="true" />
                   Serving {siteConfig.serviceAreaLabel}
                 </p>
               </div>

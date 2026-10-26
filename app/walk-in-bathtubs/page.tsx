@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/seo";
 import { products, benefits, siteImages, phoneLink, phoneDisplay } from "@/lib/site";
-import Icon, { type IconName } from "@/components/Icon";
+import Icon from "@/components/Icon";
 import ImageSlot from "@/components/ImageSlot";
 import PageHero from "@/components/PageHero";
 import ConsultationCTA from "@/components/ConsultationCTA";
@@ -79,12 +79,14 @@ export default function WalkInBathtubsPage() {
               src={siteImages.tubOverhead}
               alt="Overhead view of a walk-in bathtub filled with water, hydrotherapy jets running"
               label="Photo: walk-in tub with hydrotherapy jets"
+              icon="hydrotherapy-jets"
               aspect="16 / 10"
             />
             <ImageSlot
               src={siteImages.tubInstalled}
               alt="Walk-in bathtub installed in a home bathroom with the door closed"
               label="Photo: walk-in tub installed in a bathroom"
+              icon="walk-in-tub"
               aspect="16 / 10"
             />
           </div>
@@ -107,6 +109,9 @@ export default function WalkInBathtubsPage() {
           <div className="grid grid--2">
             {products.map((p) => (
               <div key={p.name} className="card card--accent">
+                <span className="icon-badge" aria-hidden="true">
+                  <Icon name={p.icon} />
+                </span>
                 <h3>{p.name}</h3>
                 <p>{p.summary}</p>
                 <ul className="checklist mt-1">
@@ -147,7 +152,7 @@ export default function WalkInBathtubsPage() {
             {benefits.map((b) => (
               <div key={b.title} className="card">
                 <span className="icon-badge" aria-hidden="true">
-                  <Icon name={b.icon as IconName} />
+                  <Icon name={b.icon} />
                 </span>
                 <h3>{b.title}</h3>
                 <p>{b.text}</p>

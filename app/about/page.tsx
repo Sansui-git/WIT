@@ -27,7 +27,7 @@ export default function AboutPage() {
       <PageHero
         eyebrow="About us"
         title="A local company helping neighbours stay safe at home"
-        intro={`${siteConfig.companyName} is operated by ${siteConfig.legalName}. We supply and professionally install walk-in bathtubs across the Edmonton area.`}
+        intro={`${siteConfig.companyName} is operated by ${siteConfig.legalName} We supply and professionally install walk-in bathtubs across the Edmonton area.`}
         breadcrumbs={crumbs}
       />
 
@@ -81,7 +81,7 @@ export default function AboutPage() {
           <div className="grid grid--3">
             <div className="card">
               <span className="icon-badge" aria-hidden="true">
-                <Icon name="heart" />
+                <Icon name="caregiver" />
               </span>
               <h3>People first</h3>
               <p>
@@ -91,7 +91,7 @@ export default function AboutPage() {
             </div>
             <div className="card">
               <span className="icon-badge" aria-hidden="true">
-                <Icon name="chat" />
+                <Icon name="no-pressure" />
               </span>
               <h3>Clear and honest</h3>
               <p>
@@ -101,7 +101,7 @@ export default function AboutPage() {
             </div>
             <div className="card">
               <span className="icon-badge" aria-hidden="true">
-                <Icon name="shield" />
+                <Icon name="lifetime-warranty" />
               </span>
               <h3>Quality that lasts</h3>
               <p>
@@ -127,7 +127,7 @@ export default function AboutPage() {
               {phoneDisplay}
             </a>
             <a href={emailLink} className="btn btn--outline btn--lg">
-              <Icon name="mail" width={22} height={22} />
+              <Icon name="email" width={22} height={22} />
               Email us
             </a>
           </div>

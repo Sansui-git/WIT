@@ -32,13 +32,13 @@ export default function Header() {
     <header className={styles.header}>
       {/* Main navigation */}
       <div className={styles.bar}>
-        <div className={`container ${styles.barInner}`}>
+        <div className={`container container--wide ${styles.barInner}`}>
           <Link href="/" className={styles.brand} aria-label={`${siteConfig.companyName} — home`}>
             <Image
               src="/images/logo.png"
               alt={siteConfig.companyName}
-              width={210}
-              height={70}
+              width={720}
+              height={215}
               priority
               className={styles.brandLogo}
             />
@@ -46,23 +46,34 @@ export default function Header() {
 
           <nav className={styles.desktopNav} aria-label="Primary">
             <ul>
-              {primaryNav.map((item) => (
+              {/* The logo already links home, so "Home" is left out up here. */}
+              {primaryNav.filter((item) => item.href !== "/").map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
                     className={isActive(item.href) ? styles.active : ""}
                     aria-current={isActive(item.href) ? "page" : undefined}
+                    title={item.short ? item.label : undefined}
                   >
-                    {item.label}
+                    {item.short ?? item.label}
                   </Link>
                 </li>
               ))}
             </ul>
           </nav>
 
-          <a href={phoneLink} className={`btn btn--navy ${styles.headerCta}`}>
-            <Icon name="phone" width={19} height={19} />
-            Call {phoneDisplay}
+          <a
+            href={phoneLink}
+            className={`btn btn--navy ${styles.headerCta}`}
+            aria-label={`Call us at ${phoneDisplay}`}
+          >
+            <Icon name="phone" width={20} height={20} />
+            {phoneDisplay}
+          </a>
+
+          {/* Tablet & phone: tap-to-call stays visible next to the menu */}
+          <a href={phoneLink} className={styles.mobileCall} aria-label={`Call us at ${phoneDisplay}`}>
+            <Icon name="phone" width={24} height={24} />
           </a>
 
           <button

@@ -1,4 +1,4 @@
-import { siteConfig, serviceAreas, faqs } from "./site";
+import { siteConfig, serviceAreas, faqs, pricing } from "./site";
 
 /**
  * Builders for schema.org JSON-LD structured data.
@@ -15,6 +15,10 @@ export function localBusinessSchema() {
     legalName: siteConfig.legalName,
     description: siteConfig.shortDescription,
     url: siteConfig.url,
+    logo: `${siteConfig.url}/images/logo.png`,
+    image: [`${siteConfig.url}/og-image.jpg`, `${siteConfig.url}/images/hero.jpg`],
+    priceRange: `From ${pricing.startingPrice}`,
+    currenciesAccepted: "CAD",
     telephone: siteConfig.phoneHref,
     email: siteConfig.email,
     areaServed: serviceAreas.map((name) => ({
@@ -38,6 +42,8 @@ export function localBusinessSchema() {
       "Accessible bathing",
       "Bathroom safety for seniors",
       "Mobility and aging in place",
+      "Seniors Home Adaptation and Repair Program (SHARP)",
+      "Home Accessibility Tax Credit",
     ],
     slogan: siteConfig.tagline,
   };

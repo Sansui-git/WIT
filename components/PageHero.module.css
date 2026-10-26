@@ -7,9 +7,14 @@
   color: var(--on-dark);
   max-width: 20ch;
 }
-.hero .lead {
+/* .lead and .eyebrow are global classes, so they need :global() here or the
+   module renames them and the dark-text defaults win (unreadable on navy). */
+.hero :global(.lead) {
   color: var(--on-dark-soft);
   max-width: 60ch;
+}
+.hero :global(.eyebrow) {
+  color: #f7d071;
 }
 
 .crumbs {

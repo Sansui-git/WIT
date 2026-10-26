@@ -30,10 +30,10 @@ export default function PrivacyPage() {
       <section className="section section--sand">
         <div className="container container--narrow">
           <div className={`prose ${styles.policy}`}>
-            <p className={styles.updated}>Last updated: January 2026</p>
+            <p className={styles.updated}>Last updated: October 2026</p>
 
             <p>
-              {siteConfig.companyName} is operated by {siteConfig.legalName}
+              {siteConfig.companyName} is operated by {siteConfig.legalName}{" "}
               (&ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;). We
               respect your privacy and are committed to protecting the personal
               information you share with us. This policy explains what we collect,
@@ -72,6 +72,12 @@ export default function PrivacyPage() {
               our business and serve you — for example, our own installers — and
               only to the extent needed to respond to your request. We may also
               disclose information where required by law.
+            </p>
+            <p>
+              When you send a request through our website form, it is delivered
+              to us by a secure email service provider, which may store or
+              process it on servers outside Canada. Those providers may only use
+              your information to deliver our messages.
             </p>
 
             <h2>Keeping your information</h2>

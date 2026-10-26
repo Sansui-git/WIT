@@ -80,13 +80,14 @@ the submission server-side and **emails the lead to you using
    that domain, e.g. `Edmonton Walk-In Bath Experts <website@yourdomain.ca>`.
 
 By default, leads are sent to your business email from `lib/site.ts`
-(`siteConfig.email` = `info@seniorsafetysolutions.ca`). Override with
+(`siteConfig.email` = `info@walkinbathexperts.com`). Override with
 `LEAD_TO_EMAIL` if you want them elsewhere. When a customer includes their
 email, the lead email's **reply-to** is set to them, so you can reply directly.
 
-> If `RESEND_API_KEY` isn't set yet, the form still works — submissions are
-> accepted and logged to the server so nothing is lost — it just won't email
-> until you add the key.
+> ⚠️ **Set `RESEND_API_KEY` before you launch.** Without it the form still
+> says "thank you", but the request is only written to the server log — on
+> Vercel that means you would never see it. Send yourself a test request after
+> launch to confirm it arrives.
 
 Prefer a different service (SendGrid, Postmark, a Zapier webhook, your CRM)?
 Swap the call inside `deliverLead()` in the same file. Never put API keys
@@ -144,10 +145,16 @@ like Render, Railway, DigitalOcean App Platform, AWS, etc.
 - SEO metadata + canonical URLs on every page (`lib/seo.ts`)
 - **LocalBusiness** structured data, plus FAQ and Breadcrumb schema (`lib/structuredData.ts`)
 - Auto-generated `sitemap.xml` and `robots.txt` (`app/sitemap.ts`, `app/robots.ts`)
-- Web manifest and SVG favicon
+- Web manifest, SVG favicon, Apple touch icon, and a 1200×630 social share
+  image (`public/og-image.jpg`)
 - Accessible navigation (keyboard-friendly, mobile menu) and forms
   (labels, error summary, `aria-*`, honeypot spam trap)
 - Reusable components in `components/`
+- **Custom icon set** drawn for this business (walk-in tub, grab bar, jets,
+  funding, warranty and more) in `components/Icon.tsx`, with standalone SVG
+  copies in `public/icons/`
+- Phone-only quick-contact bar (Call now / Free consultation) pinned to the
+  bottom of the screen
 - Warm, calm design system with large readable text and strong contrast
   (`app/globals.css`)
 
@@ -179,9 +186,15 @@ lib/
 
 In keeping with honest, trustworthy marketing, this site intentionally contains:
 
-- **No fabricated testimonials** — the testimonials section is a clearly labelled
-  placeholder. Replace it with real, permission-granted reviews when you have
-  them (`components/Testimonials.tsx`).
+- **No fabricated testimonials.** The home page shows a "What you can count on"
+  section instead. When you have real, permission-granted reviews, the
+  `components/Testimonials.tsx` component is ready to fill in and add back.
+- **Photo sections hide or show an illustration until real photos exist.** The
+  before/after gallery stays hidden until you add a before *and* after photo
+  for a project in `lib/site.ts → siteImages`.
+- **Funding program details** (SHARP, Home Accessibility Tax Credit, RAMP) live
+  in `lib/site.ts → fundingPrograms` and were checked against the official
+  pages in October 2026. Re-check them each April and October.
 - **No invented prices, awards, certifications, or statistics.**
 
 Add these only when you have accurate, verifiable information.

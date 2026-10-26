@@ -1,16 +1,21 @@
 .layout {
   display: grid;
-  grid-template-columns: 340px 1fr;
+  grid-template-columns: minmax(0, 340px) minmax(0, 1fr);
   gap: clamp(1.75rem, 4vw, 3rem);
   align-items: start;
 }
 @media (max-width: 900px) {
   .layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
+  }
+  /* On phones and tablets, show the form first; the call card follows. */
+  .formCol {
+    order: -1;
   }
 }
 
 .aside {
+  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
@@ -50,6 +55,8 @@
   text-decoration: underline;
 }
 .emailLink {
+  overflow-wrap: anywhere;
+  min-height: 44px;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;

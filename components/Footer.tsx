@@ -11,7 +11,7 @@ import Icon from "./Icon";
 import styles from "./Footer.module.css";
 
 export default function Footer() {
-  const year = 2026;
+  const year = new Date().getFullYear();
 
   return (
     <footer className={styles.footer}>
@@ -27,11 +27,11 @@ export default function Footer() {
                 <a href={phoneLink}>{phoneDisplay}</a>
               </li>
               <li>
-                <Icon name="mail" width={20} height={20} />
+                <Icon name="email" width={20} height={20} />
                 <a href={emailLink}>{siteConfig.email}</a>
               </li>
               <li>
-                <Icon name="map-pin" width={20} height={20} />
+                <Icon name="location" width={20} height={20} />
                 <span>{siteConfig.serviceAreaLabel}</span>
               </li>
             </ul>
@@ -80,9 +80,9 @@ export default function Footer() {
 
         <div className={styles.bottom}>
           <p>
-            &copy; {year} {siteConfig.legalName}. All rights reserved.
+            &copy; {year} {siteConfig.legalName} All rights reserved.
             <span className={styles.dot}>&middot;</span>
-            {siteConfig.companyName} is operated by {siteConfig.legalName}.
+            {siteConfig.companyName} is operated by {siteConfig.legalName}
           </p>
           <p className={styles.bottomLinks}>
             <Link href="/privacy-policy">Privacy Policy</Link>

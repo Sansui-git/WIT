@@ -36,9 +36,8 @@ export default function ConsultationForm() {
     } else if (phone.replace(/[^0-9]/g, "").length < 7) {
       next.phone = "Please enter a phone number we can reach you at.";
     }
-    if (!email) {
-      next.email = "Please enter your email address.";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    // Email is optional: many of our customers prefer a phone call.
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       next.email = "Please enter a valid email address.";
     }
     if (postal && !/^[A-Za-z]\d[A-Za-z]\s?\d[A-Za-z]\d$/.test(postal)) {
@@ -168,6 +167,8 @@ export default function ConsultationForm() {
             type="tel"
             autoComplete="tel"
             inputMode="tel"
+            required
+            aria-required="true"
             aria-invalid={errors.phone ? "true" : undefined}
             aria-describedby={errors.phone ? "err-phone" : undefined}
           />
@@ -180,7 +181,7 @@ export default function ConsultationForm() {
 
         <div className={styles.field}>
           <label htmlFor="field-email">
-            Email address <span className={styles.req}>*</span>
+            Email address <span className={styles.optional}>(optional)</span>
           </label>
           <input
             id="field-email"
@@ -188,8 +189,6 @@ export default function ConsultationForm() {
             type="email"
             autoComplete="email"
             inputMode="email"
-            required
-            aria-required="true"
             aria-invalid={errors.email ? "true" : undefined}
             aria-describedby={errors.email ? "err-email" : undefined}
           />
