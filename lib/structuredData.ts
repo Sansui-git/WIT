@@ -17,7 +17,7 @@ export function localBusinessSchema() {
     url: siteConfig.url,
     logo: `${siteConfig.url}/images/logo.png`,
     image: [`${siteConfig.url}/og-image.jpg`, `${siteConfig.url}/images/hero.jpg`],
-    priceRange: `From ${pricing.startingPrice}`,
+    priceRange: `From ${pricing.showerStartingPrice || pricing.startingPrice}`,
     currenciesAccepted: "CAD",
     telephone: siteConfig.phoneHref,
     email: siteConfig.email,
