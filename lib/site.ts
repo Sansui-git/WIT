@@ -94,8 +94,8 @@ export const siteImages: Record<string, string> = {
   forCaregivers: "",                     // Caregiver with client
   tubOverhead: "",   // Product: overhead view, jets on   (/images/tub-overhead.jpg)
   tubInstalled: "",  // Product: installed in bathroom    (/images/tub-installed.jpg)
-  // Shower images are illustrated placeholders for now. Replace each file
-  // in /public/images with a real photo of YOUR work (same file name), or
+  // Shower images are design renderings for now. Replace each file in
+  // /public/images with a real photo of YOUR work (same file name), or
   // point these at new files.
   showerLowThreshold: "/images/shower-low-threshold.jpg", // Walk-in shower with a low threshold
   showerConversion: "/images/shower-conversion.jpg",      // Tub-to-shower conversion, after
