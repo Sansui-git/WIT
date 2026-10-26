@@ -64,10 +64,9 @@ export const emailLink = `mailto:${siteConfig.email}`;
 export const pricing = {
   startingPrice: "$15,800",
   note: "Complete, professionally installed projects — tub, installation, and cleanup included. Your written quote depends on the tub you choose, the options you add, and your bathroom.",
-  // Walk-in showers & tub-to-shower conversions. Leave "" until you have a
-  // real number: the site then says "priced after a free in-home visit".
-  // When you have one, set it like the tub price, e.g. "$X,XXX".
-  showerStartingPrice: "",
+  // Walk-in showers & tub-to-shower conversions. Set to "" to hide the
+  // number: the site then says "priced after a free in-home visit".
+  showerStartingPrice: "$8,999",
   showerNote:
     "Complete, professionally installed shower projects — removal of your old tub or shower, the new shower, safety features, and cleanup. Your written quote depends on the size of the space, the entry you choose, and the work your bathroom needs.",
 };
@@ -95,8 +94,11 @@ export const siteImages: Record<string, string> = {
   forCaregivers: "",                     // Caregiver with client
   tubOverhead: "",   // Product: overhead view, jets on   (/images/tub-overhead.jpg)
   tubInstalled: "",  // Product: installed in bathroom    (/images/tub-installed.jpg)
-  showerLowThreshold: "", // Walk-in shower with a low threshold   (/images/shower-low-threshold.jpg)
-  showerConversion: "",   // Tub-to-shower conversion, after       (/images/shower-conversion.jpg)
+  // Shower images are design renderings for now. Replace each file in
+  // /public/images with a real photo of YOUR work (same file name), or
+  // point these at new files.
+  showerLowThreshold: "/images/shower-low-threshold.jpg", // Walk-in shower with a low threshold
+  showerConversion: "/images/shower-conversion.jpg",      // Tub-to-shower conversion, after
   illustration: "/images/tub-illustration.png", // Line drawing of an open-door walk-in tub
   install1Before: "",  // Before photo — project 1 (YOUR real projects only)
   install1After: "",   // After photo — project 1
