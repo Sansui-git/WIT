@@ -16,7 +16,7 @@ export const siteConfig = {
   legalName: "Senior Safety Solutions Inc.",
   tagline: "Safer, more comfortable bathing for Edmonton seniors",
   shortDescription:
-    "We supply and professionally install walk-in bathtubs for seniors and people with mobility challenges across Edmonton and surrounding communities.",
+    "We supply and professionally install walk-in bathtubs and walk-in showers for seniors and people with mobility challenges across Edmonton and surrounding communities.",
 
   // ---- Contact -------------------------------------------------------------
   phone: "780-289-2393",
@@ -64,7 +64,18 @@ export const emailLink = `mailto:${siteConfig.email}`;
 export const pricing = {
   startingPrice: "$15,800",
   note: "Complete, professionally installed projects — tub, installation, and cleanup included. Your written quote depends on the tub you choose, the options you add, and your bathroom.",
+  // Walk-in showers & tub-to-shower conversions. Leave "" until you have a
+  // real number: the site then says "priced after a free in-home visit".
+  // When you have one, set it like the tub price, e.g. "$X,XXX".
+  showerStartingPrice: "",
+  showerNote:
+    "Complete, professionally installed shower projects — removal of your old tub or shower, the new shower, safety features, and cleanup. Your written quote depends on the size of the space, the entry you choose, and the work your bathroom needs.",
 };
+
+/** The shower price as a short phrase, e.g. "from $X,XXX", or a fallback. */
+export const showerPriceLabel = pricing.showerStartingPrice
+  ? `from ${pricing.showerStartingPrice}`
+  : "priced after a free in-home visit";
 
 // ---------------------------------------------------------------------------
 //  IMAGES
@@ -84,6 +95,8 @@ export const siteImages: Record<string, string> = {
   forCaregivers: "",                     // Caregiver with client
   tubOverhead: "",   // Product: overhead view, jets on   (/images/tub-overhead.jpg)
   tubInstalled: "",  // Product: installed in bathroom    (/images/tub-installed.jpg)
+  showerLowThreshold: "", // Walk-in shower with a low threshold   (/images/shower-low-threshold.jpg)
+  showerConversion: "",   // Tub-to-shower conversion, after       (/images/shower-conversion.jpg)
   illustration: "/images/tub-illustration.png", // Line drawing of an open-door walk-in tub
   install1Before: "",  // Before photo — project 1 (YOUR real projects only)
   install1After: "",   // After photo — project 1
@@ -106,6 +119,7 @@ export interface NavItem {
 export const primaryNav: NavItem[] = [
   { label: "Home", href: "/" },
   { label: "Walk-In Bathtubs", href: "/walk-in-bathtubs", short: "Walk-In Tubs" },
+  { label: "Walk-In Showers", href: "/walk-in-showers", short: "Showers" },
   { label: "Features & Options", href: "/features-and-options", short: "Features" },
   { label: "Installation", href: "/installation-process" },
   { label: "Financing & Funding", href: "/financing", short: "Financing" },
@@ -114,8 +128,14 @@ export const primaryNav: NavItem[] = [
   { label: "FAQ", href: "/faq" },
 ];
 
+/** Pages linked from the footer and sitemap but not the header. */
+export const secondaryPages: NavItem[] = [
+  { label: "Tub or Shower? Guide", href: "/tub-or-shower" },
+];
+
 export const footerNav: NavItem[] = [
   ...primaryNav,
+  ...secondaryPages,
   { label: "Request a Consultation", href: "/request-a-consultation" },
   { label: "Privacy Policy", href: "/privacy-policy" },
 ];
@@ -133,7 +153,7 @@ export const trustIndicators: { title: string; text: string; icon: IconName }[] 
   },
   {
     title: "Professional installation",
-    text: "Your walk-in bathtub is installed by our own experienced installers.",
+    text: "Your walk-in tub or shower is installed by our own experienced installers.",
     icon: "certified-installer",
   },
   {
@@ -245,6 +265,165 @@ export const products: {
 ];
 
 // ---------------------------------------------------------------------------
+//  WALK-IN SHOWER OPTIONS
+//  Generic categories — no invented brand names, prices, or specs.
+// ---------------------------------------------------------------------------
+export const showerProducts: {
+  name: string;
+  icon: IconName;
+  summary: string;
+  points: string[];
+}[] = [
+  {
+    name: "Tub-to-shower conversions",
+    icon: "tub-to-shower",
+    summary:
+      "We remove your old bathtub and build a walk-in shower in the same space, so there is no high tub wall to climb over ever again.",
+    points: [
+      "Fits the space your tub uses now",
+      "Low step-in or curbless entry",
+      "Safety features built in from the start",
+      "Often the simplest bathroom safety upgrade",
+    ],
+  },
+  {
+    name: "Low-threshold walk-in showers",
+    icon: "walk-in-shower",
+    summary:
+      "A shower with a low, gentle step in — just enough to hold the water back — plus a seat, grab bars, and a handheld shower.",
+    points: [
+      "Low entry instead of a high tub wall",
+      "Room for a built-in or fold-down seat",
+      "Slip-resistant floor",
+      "Wide door or curtain opening",
+    ],
+  },
+  {
+    name: "Curbless & roll-in showers",
+    icon: "curbless-entry",
+    summary:
+      "A level, zero-threshold entry with no step at all — the best fit for a walker, a wheelchair, or a shower chair, and easier for caregivers.",
+    points: [
+      "No step to lift your feet over",
+      "Room for a walker, wheelchair, or shower chair",
+      "Easier for a caregiver to help",
+      "Your floor is checked during the consultation",
+    ],
+  },
+  {
+    name: "Safety upgrades for your shower",
+    icon: "grab-bar",
+    summary:
+      "Already have a shower that mostly works? We can add the pieces that make it safer, without replacing the whole thing.",
+    points: [
+      "Securely mounted grab bars",
+      "Fold-down shower seat",
+      "Handheld shower on a slide bar",
+      "Anti-scald temperature control",
+    ],
+  },
+];
+
+export const showerFeatures: { title: string; text: string; icon: IconName }[] = [
+  {
+    title: "Low or zero threshold",
+    icon: "curbless-entry",
+    text: "Step in over a low edge, or roll straight in on a curbless floor — no high tub wall.",
+  },
+  {
+    title: "Shower seat",
+    icon: "shower-seat",
+    text: "A built-in bench or sturdy fold-down seat lets you shower sitting down, then folds away.",
+  },
+  {
+    title: "Grab bars",
+    icon: "grab-bar",
+    text: "Mounted into solid backing where your hands naturally reach, getting in, out, and while seated.",
+  },
+  {
+    title: "Slip-resistant floor",
+    icon: "non-slip-floor",
+    text: "A textured shower floor that helps keep your footing when it is wet and soapy.",
+  },
+  {
+    title: "Handheld shower",
+    icon: "handheld-shower",
+    text: "A handheld head on an adjustable slide bar, so you can rinse comfortably while seated.",
+  },
+  {
+    title: "Anti-scald control",
+    icon: "anti-scald",
+    text: "A temperature-limiting valve helps protect against sudden bursts of water that is too hot.",
+  },
+  {
+    title: "Easy-reach controls",
+    icon: "easy-controls",
+    text: "Controls you can reach from the seat, before the water reaches you.",
+  },
+  {
+    title: "Grout-free wall panels",
+    icon: "wall-panels",
+    text: "Smooth, waterproof wall panels with no grout lines to scrub, so the shower stays easy to clean.",
+  },
+];
+
+// ---------------------------------------------------------------------------
+//  TUB OR SHOWER? COMPARISON
+//  Plain, honest guidance. Used on /tub-or-shower.
+// ---------------------------------------------------------------------------
+export const tubVsShower: { topic: string; tub: string; shower: string }[] = [
+  {
+    topic: "Getting in",
+    tub: "Step over a low threshold through a watertight door.",
+    shower: "Step over a low edge, or walk or roll straight in with a curbless floor.",
+  },
+  {
+    topic: "Bathing",
+    tub: "Sit and soak in warm water up to your shoulders.",
+    shower: "Shower standing or seated, with a handheld shower.",
+  },
+  {
+    topic: "Time",
+    tub: "You sit inside while the tub fills and drains.",
+    shower: "Water on and off in seconds — no waiting.",
+  },
+  {
+    topic: "Walkers & wheelchairs",
+    tub: "You need to be able to step in and sit down.",
+    shower: "A curbless shower works with a walker, wheelchair, or shower chair.",
+  },
+  {
+    topic: "Caregiver help",
+    tub: "Best for people who can bathe on their own or with light help.",
+    shower: "An open entry gives a caregiver more room to help.",
+  },
+  {
+    topic: "Aches & joints",
+    tub: "A deep soak, with optional jets, can ease sore muscles and stiff joints.",
+    shower: "Warm water and a seat, without the deep soak.",
+  },
+  {
+    topic: "Space",
+    tub: "Many models fit the footprint of a standard tub.",
+    shower: "A conversion fits the space your tub uses now.",
+  },
+];
+
+export const tubChoosers: string[] = [
+  "You love a long, warm bath and miss it",
+  "Sore joints or muscles would benefit from a deep soak or jets",
+  "You can step over a low threshold and sit down safely",
+  "You do not mind waiting a few minutes while it fills and drains",
+];
+
+export const showerChoosers: string[] = [
+  "You use a walker or wheelchair, or may in the future",
+  "A caregiver helps you bathe, or soon will",
+  "You prefer showers, or want the quickest routine",
+  "You want the lowest possible step, or no step at all",
+];
+
+// ---------------------------------------------------------------------------
 //  FEATURES & OPTIONS
 // ---------------------------------------------------------------------------
 export const features: { title: string; text: string; icon: IconName }[] = [
@@ -329,7 +508,7 @@ export const installationSteps: {
     step: 2,
     icon: "quote-request",
     title: "Personalized recommendation",
-    text: "Based on your bathroom, your mobility needs, and your budget, we recommend the walk-in tub and options that fit best, and explain your choices in plain language.",
+    text: "Based on your bathroom, your mobility needs, and your budget, we recommend the walk-in tub or shower and options that fit best, and explain your choices in plain language.",
   },
   {
     step: 3,
@@ -341,13 +520,13 @@ export const installationSteps: {
     step: 4,
     icon: "certified-installer",
     title: "Professional installation",
-    text: "Our experienced installers remove your old tub if needed, fit your new walk-in tub, connect the plumbing, and make sure everything works properly.",
+    text: "Our experienced installers remove your old tub or shower if needed, fit your new walk-in tub or shower, connect the plumbing, and make sure everything works properly.",
   },
   {
     step: 5,
     icon: "check",
     title: "Walkthrough & cleanup",
-    text: "We show you how to use your new tub and all of its features, answer any remaining questions, and clean up so your bathroom is ready to use.",
+    text: "We show you how to use your new tub or shower and all of its features, answer any remaining questions, and clean up so your bathroom is ready to use.",
   },
   {
     step: 6,
@@ -429,7 +608,7 @@ export const fundingPrograms: {
     kind: "Alberta low-interest home-equity loan",
     icon: "home-equity-loan",
     summary:
-      "A Government of Alberta loan for home adaptations. The program lists walk-in tubs by name as an eligible project.",
+      "A Government of Alberta loan for home adaptations. The program lists bathroom projects and walk-in tubs by name among its examples.",
     points: [
       "Loans of up to $40,000",
       "For Albertans 65+ (only one spouse needs to be 65) with household income of $75,000 or less",
@@ -445,7 +624,7 @@ export const fundingPrograms: {
     kind: "Federal tax credit",
     icon: "tax-credit",
     summary:
-      "A non-refundable federal tax credit for renovations that make a home safer or more accessible for a senior or a person eligible for the disability tax credit.",
+      "A non-refundable federal tax credit for renovations that make a home safer or more accessible for a senior or a person eligible for the disability tax credit — such as a walk-in tub or a walk-in shower that reduces the risk of a fall.",
     points: [
       "Claim up to $20,000 of eligible expenses per year (line 31285 of your return)",
       "Worth 15% of eligible expenses — up to $3,000 back on your taxes",
@@ -491,6 +670,21 @@ export const faqs: { question: string; answer: string }[] = [
       "In many cases, yes. Walk-in tubs come in a range of sizes, and some are designed to fit the footprint of a standard bathtub. The best way to know for certain is a free in-home consultation, where we measure your space and talk through your options.",
   },
   {
+    question: "Do you install walk-in showers too?",
+    answer:
+      "Yes. Along with walk-in bathtubs, we install low-threshold walk-in showers, curbless roll-in showers, and tub-to-shower conversions, where we take out your old bathtub and build a walk-in shower in its place. We can also add grab bars, a shower seat, and a handheld shower to a shower you already have.",
+  },
+  {
+    question: "Should I choose a walk-in tub or a walk-in shower?",
+    answer:
+      "It depends on how you like to bathe and how you move. A walk-in tub is best if you love a warm soak and can step over a low threshold and sit down. A walk-in shower is usually better if you use a walker or wheelchair, have a caregiver helping you, or want the quickest routine with no waiting for the tub to fill and drain. Our Tub or Shower? guide compares them side by side, and we are happy to help you decide at your free consultation.",
+  },
+  {
+    question: "Can you convert my bathtub into a walk-in shower?",
+    answer:
+      "In most bathrooms, yes. A tub-to-shower conversion replaces your existing bathtub with a walk-in shower that fits the same space, with a low or curbless entry, a seat, grab bars, and a handheld shower. We confirm what your bathroom needs during your free in-home consultation.",
+  },
+  {
     question: "How long does installation take?",
     answer:
       "Every bathroom is different, so the time can vary. During your consultation we assess your space and tell you how long your installation should take before any work begins, so you can plan around it.",
@@ -511,14 +705,20 @@ export const faqs: { question: string; answer: string }[] = [
       "Complete, professionally installed projects start from $15,800. Your final price depends on the tub you choose, the options you add, and the work your bathroom needs, so we give you a clear, written quote after a free in-home consultation — with no obligation.",
   },
   {
+    question: "How much does a walk-in shower or tub-to-shower conversion cost?",
+    answer: pricing.showerStartingPrice
+      ? `Complete, professionally installed shower projects start from ${pricing.showerStartingPrice}. Your final price depends on the size of the space, the entry you choose, and the work your bathroom needs, so we give you a clear, written quote after a free in-home consultation — with no obligation.`
+      : "Every shower project depends on the size of the space, the type of entry you choose, and the work your bathroom needs, so we give you a clear, written quote after a free in-home consultation — with no obligation. The same funding programs that help with walk-in tubs may help with a walk-in shower too.",
+  },
+  {
     question: "Are there financing options?",
     answer:
       "Yes. We can discuss ways to spread the cost over time during your consultation so it fits your budget, and explain your options in plain language so you and your family can decide what works.",
   },
   {
-    question: "Are there government programs that help pay for a walk-in tub?",
+    question: "Are there government programs that help pay for a walk-in tub or shower?",
     answer:
-      "Often, yes. Alberta's Seniors Home Adaptation and Repair Program (SHARP) offers eligible seniors a low-interest home-equity loan with no monthly payments, and it lists walk-in tubs as an eligible project. The federal Home Accessibility Tax Credit can return up to $3,000 on your taxes, and some lower-income Albertans with significant mobility needs may qualify for a RAMP grant. See our Financing & Funding page for details, and we can help you work out which programs may apply.",
+      "Often, yes. Alberta's Seniors Home Adaptation and Repair Program (SHARP) offers eligible seniors a low-interest home-equity loan with no monthly payments, and it lists bathroom projects and walk-in tubs among its examples. The federal Home Accessibility Tax Credit can return up to $3,000 on your taxes for renovations that make a home safer, such as a walk-in tub or shower, and some lower-income Albertans with significant mobility needs may qualify for a RAMP grant. See our Financing & Funding page for details, and we can help you work out which programs may apply.",
   },
   {
     question: "Do you serve my community?",

@@ -11,7 +11,7 @@ import { breadcrumbSchema, faqSchema } from "@/lib/structuredData";
 export const metadata: Metadata = pageMetadata({
   title: "Frequently Asked Questions",
   description:
-    "Answers to common questions about walk-in bathtubs — how they work, who they are for, fit, installation, cost, financing, and getting started in the Edmonton area.",
+    "Answers to common questions about walk-in bathtubs and walk-in showers — how they work, who they are for, fit, installation, cost, financing, and getting started in the Edmonton area.",
   path: "/faq",
 });
 

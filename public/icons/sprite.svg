@@ -170,4 +170,18 @@
 <symbol id="i-menu" viewBox="0 0 48 48"><title>Menu</title><path d="M8 14h32M8 24h32M8 34h32"/></symbol>
 <symbol id="i-close" viewBox="0 0 48 48"><title>Close</title><path d="M12 12l24 24M36 12L12 36"/></symbol>
 <symbol id="i-chevron-down" viewBox="0 0 48 48"><title>Expand</title><path d="M12 18l12 12 12-12"/></symbol>
+<symbol id="i-curbless-entry" viewBox="0 0 48 48"><title>Curbless, zero-threshold shower entry</title><path fill="currentColor" fill-opacity=".16" stroke="none" d="M26 8h16v30H26z"/>
+<path d="M4 38h40"/><path d="M26 38V8h16v30"/>
+<path d="M31 13h6"/><path d="M34 13v-3"/><path d="M31 17l-.5 2M34 17v3M37 17l.5 2"/>
+<path d="M30 34h8"/>
+<path d="M6 31h14"/><path d="M16 27l4 4-4 4"/></symbol>
+<symbol id="i-shower-seat" viewBox="0 0 48 48"><title>Fold-down shower seat</title><path fill="currentColor" fill-opacity=".16" stroke="none" d="M10 23h18v5H10z"/>
+<path d="M10 6v36"/><path d="M6 42h36"/>
+<path d="M10 23h18v5H10"/><path d="M24 28l4 14"/>
+<path d="M10 9h22v3"/><path d="M27 17h10a5 5 0 0 0-10 0z"/>
+<path d="M29 21l-.5 2M32 21v3M35 21l.5 2"/></symbol>
+<symbol id="i-wall-panels" viewBox="0 0 48 48"><title>Grout-free shower wall panels</title><path fill="currentColor" fill-opacity=".16" stroke="none" d="M8 8h10.7v32H8z"/><path fill="currentColor" fill-opacity=".16" stroke="none" d="M29.3 8H40v32H29.3z"/>
+<rect x="8" y="8" width="32" height="32" rx="2"/>
+<path d="M18.7 8v32M29.3 8v32"/>
+<path d="M24 17v6M21 20h6"/></symbol>
 </svg>

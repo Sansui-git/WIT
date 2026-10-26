@@ -5,6 +5,7 @@ import {
   serviceAreas,
   faqs,
   pricing,
+  showerPriceLabel,
   siteImages,
   phoneLink,
   phoneDisplay,
@@ -121,8 +122,9 @@ export default function HomePage() {
               Safe, comfortable bathing at home
             </h1>
             <p className={styles.heroLead}>
-              Edmonton walk-in bathtub specialists for seniors, caregivers, and
-              families who want safer bathing without leaving home.
+              Edmonton walk-in bathtub and walk-in shower specialists for
+              seniors, caregivers, and families who want safer bathing without
+              leaving home.
             </p>
             <div className="btn-row">
               <Link href="/request-a-consultation" className="btn btn--navy btn--lg">
@@ -168,9 +170,9 @@ export default function HomePage() {
               <h2 id="safer-heading">A safer bathing solution</h2>
               <div className="rule" />
               <p className="lead mt-1">
-                Our walk-in bathtubs are designed to help seniors maintain their
-                independence and confidence while making bathing easier and
-                safer every day.
+                Our walk-in bathtubs and showers are designed to help seniors
+                maintain their independence and confidence while making
+                bathing easier and safer every day.
               </p>
               <Link href="/walk-in-bathtubs" className={`btn btn--outline ${styles.saferBtn}`}>
                 Explore our tubs
@@ -189,6 +191,55 @@ export default function HomePage() {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ---- Tubs and showers ---------------------------------------------- */}
+      <section className="section section--sand" aria-labelledby="options-heading">
+        <div className="container">
+          <div className="section-head section-head--center">
+            <h2 id="options-heading">Walk-in tubs and walk-in showers</h2>
+            <div className="rule" />
+            <p className="lead">
+              Some people want a warm, relaxing soak. Others need a shower they
+              can walk or roll straight into. We install both, and help you
+              choose.
+            </p>
+          </div>
+          <div className="grid grid--2">
+            {[
+              {
+                href: "/walk-in-bathtubs",
+                icon: "walk-in-tub" as IconName,
+                title: "Walk-in bathtubs",
+                text: "Step in through a watertight door, sit on a built-in seat, and enjoy a deep, warm soak — with optional hydrotherapy jets.",
+                cta: "Explore walk-in tubs",
+              },
+              {
+                href: "/walk-in-showers",
+                icon: "tub-to-shower" as IconName,
+                title: "Walk-in showers & conversions",
+                text: "Replace your old tub with a low-threshold or curbless shower, with a seat, grab bars, and a handheld shower.",
+                cta: "Explore walk-in showers",
+              },
+            ].map((o) => (
+              <Link key={o.href} href={o.href} className={`card card--accent ${styles.optionCard}`}>
+                <span className="icon-badge" aria-hidden="true">
+                  <Icon name={o.icon} />
+                </span>
+                <h3>{o.title}</h3>
+                <p>{o.text}</p>
+                <span className={styles.optionLink}>
+                  {o.cta}
+                  <Icon name="arrow-right" width={20} height={20} />
+                </span>
+              </Link>
+            ))}
+          </div>
+          <p className="text-center lead mt-3">
+            Not sure which is right?{" "}
+            <Link href="/tub-or-shower">Compare tubs and showers side by side</Link>.
+          </p>
         </div>
       </section>
 
@@ -329,7 +380,7 @@ export default function HomePage() {
             <h2 id="promise-heading">What you can count on</h2>
             <div className="rule" />
             <p className="lead">
-              Buying a walk-in tub should feel calm and clear. Here is how we
+              Choosing a walk-in tub or shower should feel calm and clear. Here is how we
               work with every family.
             </p>
           </div>
@@ -366,18 +417,26 @@ export default function HomePage() {
                 </span>
                 <p>
                   <strong>Alberta seniors may pay much less.</strong> The
-                  province&apos;s SHARP program lists walk-in tubs by name and
-                  offers a low-interest loan with no monthly payments, and the
+                  province&apos;s SHARP program lists bathroom projects and
+                  walk-in tubs by name and offers a low-interest loan with no
+                  monthly payments, and the
                   federal Home Accessibility Tax Credit can return up to $3,000.{" "}
                   <Link href="/financing">See funding programs</Link>
                 </p>
               </div>
             </div>
             <div className={styles.priceCard}>
-              <p className={styles.priceLabel}>Complete installed projects</p>
+              <p className={styles.priceLabel}>Complete installed walk-in tubs</p>
               <p className={styles.priceValue}>
                 <span className={styles.priceFrom}>starting from</span>
                 {pricing.startingPrice}
+              </p>
+              <p className={styles.priceShower}>
+                <Icon name="walk-in-shower" width={22} height={22} aria-hidden="true" />
+                <span>
+                  Walk-in showers &amp; conversions:{" "}
+                  <Link href="/walk-in-showers">{showerPriceLabel}</Link>
+                </span>
               </p>
               <Link href="/financing" className="btn btn--primary btn--block">
                 Ask About Financing
@@ -399,7 +458,7 @@ export default function HomePage() {
               <h2 id="areas-heading">Proudly serving the Edmonton area</h2>
               <div className="rule" />
               <p className="lead mt-1">
-                We install walk-in bathtubs throughout {siteConfig.city} and many
+                We install walk-in bathtubs and showers throughout {siteConfig.city} and many
                 surrounding communities. Nearby? Call us — we are happy to
                 confirm we cover your area.
               </p>
@@ -444,7 +503,7 @@ export default function HomePage() {
           <div className={styles.formLayout}>
             <div className={styles.formCopy}>
               <h2 id="form-heading">
-                Find out if a walk-in bathtub is right for your home
+                Find out if a walk-in tub or shower is right for your home
               </h2>
               <p className="lead">
                 Book your free in-home assessment and get clear

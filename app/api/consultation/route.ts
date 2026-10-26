@@ -39,6 +39,7 @@ interface Lead {
   phone?: string;
   email?: string;
   postal?: string;
+  interest?: string;
   who?: string;
   time?: string;
   message?: string;
@@ -68,13 +69,16 @@ function buildEmail(lead: Lead): { subject: string; text: string; html: string }
     ["Phone", lead.phone],
     ["Email", lead.email],
     ["Postal code", lead.postal],
+    ["Interested in", lead.interest],
     ["Who it's for", lead.who],
     ["Best time to reach", lead.time],
     ["Message", lead.message],
   ];
   const present = rows.filter(([, v]) => v && v.length > 0) as [string, string][];
 
-  const subject = `New consultation request — ${lead.name}`;
+  const subject = `New consultation request — ${lead.name}${
+    lead.interest ? ` (${lead.interest})` : ""
+  }`;
 
   const text = present.map(([k, v]) => `${k}: ${v}`).join("\n");
 
@@ -177,6 +181,7 @@ export async function POST(request: Request) {
     phone: phone || undefined,
     email: email || undefined,
     postal: postal ? postal.toUpperCase() : undefined,
+    interest: typeof body.interest === "string" ? body.interest : undefined,
     who: typeof body.who === "string" ? body.who : undefined,
     time: typeof body.time === "string" ? body.time : undefined,
     message: typeof body.message === "string" ? body.message.trim() : undefined,

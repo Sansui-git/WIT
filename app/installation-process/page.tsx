@@ -11,7 +11,7 @@ import styles from "./installation.module.css";
 export const metadata: Metadata = pageMetadata({
   title: "Installation Process",
   description:
-    "How walk-in bathtub installation works, step by step — from your free in-home consultation to professional installation, walkthrough, and ongoing support.",
+    "How walk-in tub and walk-in shower installation works, step by step — from your free in-home consultation to professional installation, walkthrough, and ongoing support.",
   path: "/installation-process",
 });
 
