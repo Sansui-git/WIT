@@ -217,7 +217,7 @@
 }
 
 /* ---- Responsive switch ------------------------------------------------- */
-@media (max-width: 1100px) {
+@media (max-width: 1180px) {
   .desktopNav,
   .headerCta {
     display: none;
@@ -239,7 +239,7 @@
 }
 
 /* Keep a long menu scrollable on short phones (body scroll is locked). */
-@media (max-width: 1100px) {
+@media (max-width: 1180px) {
   .mobileMenu {
     max-height: calc(100dvh - 72px);
     overflow-y: auto;

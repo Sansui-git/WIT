@@ -39,6 +39,9 @@ export function localBusinessSchema() {
     })),
     knowsAbout: [
       "Walk-in bathtubs",
+      "Walk-in showers",
+      "Tub-to-shower conversions",
+      "Curbless and roll-in showers",
       "Accessible bathing",
       "Bathroom safety for seniors",
       "Mobility and aging in place",

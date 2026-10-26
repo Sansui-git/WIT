@@ -11,7 +11,7 @@ import { breadcrumbSchema } from "@/lib/structuredData";
 export const metadata: Metadata = pageMetadata({
   title: "About Us",
   description:
-    "Edmonton Walk-In Bath Experts, operated by Senior Safety Solutions Inc., supplies and installs walk-in bathtubs for seniors and people with mobility challenges across the Edmonton area.",
+    "Edmonton Walk-In Bath Experts, operated by Senior Safety Solutions Inc., supplies and installs walk-in bathtubs and walk-in showers for seniors and people with mobility challenges across the Edmonton area.",
   path: "/about",
 });
 
@@ -27,7 +27,7 @@ export default function AboutPage() {
       <PageHero
         eyebrow="About us"
         title="A local company helping neighbours stay safe at home"
-        intro={`${siteConfig.companyName} is operated by ${siteConfig.legalName} We supply and professionally install walk-in bathtubs across the Edmonton area.`}
+        intro={`${siteConfig.companyName} is operated by ${siteConfig.legalName} We supply and professionally install walk-in bathtubs and walk-in showers across the Edmonton area.`}
         breadcrumbs={crumbs}
       />
 
@@ -39,8 +39,8 @@ export default function AboutPage() {
               <p>
                 We are a local company focused on one thing: helping seniors and
                 people with mobility challenges bathe safely and comfortably in
-                their own homes. We supply quality walk-in bathtubs and install
-                them ourselves, so the people who plan your project are the same
+                their own homes. We supply quality walk-in bathtubs and walk-in
+                showers and install them ourselves, so the people who plan your project are the same
                 people who stand behind it.
               </p>
               <p>
@@ -56,7 +56,7 @@ export default function AboutPage() {
                 We believe in clear, calm, no-pressure guidance. When you contact
                 us, we start with a free in-home consultation, listen to your
                 needs, and explain your options in plain language. If a walk-in
-                tub is the right fit, we take care of the installation from start
+                tub or shower is the right fit, we take care of the installation from start
                 to finish. If it isn&apos;t, we will tell you that too.
               </p>
               <p>

@@ -20,6 +20,9 @@ export const metadata: Metadata = {
   keywords: [
     "walk-in bathtubs Edmonton",
     "walk-in tubs for seniors",
+    "walk-in showers Edmonton",
+    "tub to shower conversion Edmonton",
+    "curbless shower seniors",
     "accessible bathtub Edmonton",
     "senior bathroom safety",
     "walk-in tub installation Alberta",

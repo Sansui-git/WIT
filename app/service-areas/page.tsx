@@ -11,7 +11,7 @@ import styles from "./areas.module.css";
 export const metadata: Metadata = pageMetadata({
   title: "Service Areas",
   description:
-    "We install walk-in bathtubs in Edmonton and surrounding communities including St. Albert, Sherwood Park, Spruce Grove, Leduc, Beaumont, Fort Saskatchewan, and more.",
+    "We install walk-in bathtubs and walk-in showers in Edmonton and surrounding communities including St. Albert, Sherwood Park, Spruce Grove, Leduc, Beaumont, Fort Saskatchewan, and more.",
   path: "/service-areas",
 });
 
@@ -27,7 +27,7 @@ export default function ServiceAreasPage() {
       <PageHero
         eyebrow="Service areas"
         title={`Serving ${siteConfig.city} and surrounding communities`}
-        intro="We install walk-in bathtubs throughout the Edmonton area. If your community is on this list — or nearby — we would be glad to help."
+        intro="We install walk-in bathtubs and walk-in showers throughout the Edmonton area. If your community is on this list — or nearby — we would be glad to help."
         breadcrumbs={crumbs}
       />
 

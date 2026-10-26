@@ -8,6 +8,12 @@ import styles from "./ConsultationForm.module.css";
 type Errors = Record<string, string>;
 
 const bestTimes = ["Morning", "Afternoon", "Evening", "No preference"];
+const interests = [
+  "Walk-in bathtub",
+  "Walk-in shower",
+  "Tub-to-shower conversion",
+  "Not sure yet — help me choose",
+];
 const whoFor = [
   "Myself",
   "My parent or relative",
@@ -216,6 +222,20 @@ export default function ConsultationForm() {
               {errors.postal}
             </p>
           )}
+        </div>
+
+        <div className={`${styles.field} ${styles.full}`}>
+          <label htmlFor="field-interest">What are you interested in?</label>
+          <select id="field-interest" name="interest" defaultValue="">
+            <option value="" disabled>
+              Please choose…
+            </option>
+            {interests.map((i) => (
+              <option key={i} value={i}>
+                {i}
+              </option>
+            ))}
+          </select>
         </div>
 
         <div className={styles.field}>

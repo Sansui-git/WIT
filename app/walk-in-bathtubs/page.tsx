@@ -124,7 +124,9 @@ export default function WalkInBathtubsPage() {
           </div>
           <p className="text-center lead mt-3">
             Not sure which is right for you? That is exactly what a consultation
-            is for.
+            is for. You can also{" "}
+            <Link href="/tub-or-shower">compare walk-in tubs and showers</Link>,
+            or see our <Link href="/walk-in-showers">walk-in showers</Link>.
           </p>
           <div className="text-center mt-2">
             <div className="btn-row" style={{ justifyContent: "center" }}>

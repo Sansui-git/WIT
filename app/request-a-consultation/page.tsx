@@ -11,7 +11,7 @@ import styles from "./request.module.css";
 export const metadata: Metadata = pageMetadata({
   title: "Request a Consultation",
   description:
-    "Request a free, no-obligation in-home consultation for a walk-in bathtub in Edmonton and surrounding communities. Call 780-289-2393 or fill out our simple form.",
+    "Request a free, no-obligation in-home consultation for a walk-in bathtub or walk-in shower in Edmonton and surrounding communities. Call 780-289-2393 or fill out our simple form.",
   path: "/request-a-consultation",
 });
 

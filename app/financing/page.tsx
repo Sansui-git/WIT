@@ -6,6 +6,7 @@ import {
   fundingPrograms,
   fundingCheckedDate,
   pricing,
+  showerPriceLabel,
   phoneLink,
   phoneDisplay,
 } from "@/lib/site";
@@ -19,7 +20,7 @@ import styles from "./financing.module.css";
 export const metadata: Metadata = pageMetadata({
   title: "Financing & Funding",
   description:
-    "Ways to pay for a walk-in bathtub in Alberta: a clear written quote, options to spread the cost, and help with SHARP, the Home Accessibility Tax Credit, and RAMP.",
+    "Ways to pay for a walk-in bathtub or walk-in shower in Alberta: a clear written quote, options to spread the cost, and help with SHARP, the Home Accessibility Tax Credit, and RAMP.",
   path: "/financing",
 });
 
@@ -35,7 +36,7 @@ export default function FinancingPage() {
       <PageHero
         eyebrow="Financing & funding"
         title="Making a safer bathroom fit your budget"
-        intro="A walk-in bathtub is an investment in safety and independence. We keep pricing clear, talk through ways to spread the cost, and help you find out which Alberta and federal programs may lower it."
+        intro="A walk-in bathtub or shower is an investment in safety and independence. We keep pricing clear, talk through ways to spread the cost, and help you find out which Alberta and federal programs may lower it."
         breadcrumbs={crumbs}
       />
 
@@ -62,7 +63,7 @@ export default function FinancingPage() {
         <div className="container">
           <div className="section-head section-head--center">
             <span className="eyebrow">Programs that can help</span>
-            <h2 id="programs-heading">Alberta and federal funding for walk-in tubs</h2>
+            <h2 id="programs-heading">Alberta and federal funding for walk-in tubs and showers</h2>
             <div className="rule" />
             <p className="lead">
               Many Alberta seniors combine these programs. We are glad to help
@@ -129,6 +130,12 @@ export default function FinancingPage() {
               bathroom and every tub is different, your final price depends on
               the model you choose, the options you add, and the work your
               bathroom needs.
+            </p>
+            <p>
+              Walk-in showers and tub-to-shower conversions are{" "}
+              <strong>{showerPriceLabel}</strong>. The size of the space, the
+              type of entry, and the work your bathroom needs all make a
+              difference.
             </p>
             <p>
               After a free in-home consultation, we give you a clear, written

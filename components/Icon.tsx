@@ -7,7 +7,7 @@ import type { SVGProps } from "react";
  * Standalone SVG copies of every icon live in /public/icons.
  */
 
-const iconNames = ["walk-in-tub", "low-step-entry", "grab-bar", "non-slip-floor", "hydrotherapy-jets", "air-bath", "built-in-seat", "heated-seat", "handheld-shower", "tub-to-shower", "walk-in-shower", "quick-drain", "leakproof-door", "anti-scald", "chromotherapy", "easy-controls", "one-day-install", "certified-installer", "lifetime-warranty", "transferable-warranty", "free-assessment", "no-pressure", "cancellation-10-day", "transparent-pricing", "government-funding", "home-equity-loan", "tax-credit", "financing", "caregiver", "fall-prevention", "aging-in-place", "local-alberta", "senior-discount", "phone", "email", "location", "hours", "star-review", "quote-request", "check", "arrow-right", "menu", "close", "chevron-down"] as const;
+const iconNames = ["walk-in-tub", "low-step-entry", "grab-bar", "non-slip-floor", "hydrotherapy-jets", "air-bath", "built-in-seat", "heated-seat", "handheld-shower", "tub-to-shower", "walk-in-shower", "curbless-entry", "shower-seat", "wall-panels", "quick-drain", "leakproof-door", "anti-scald", "chromotherapy", "easy-controls", "one-day-install", "certified-installer", "lifetime-warranty", "transferable-warranty", "free-assessment", "no-pressure", "cancellation-10-day", "transparent-pricing", "government-funding", "home-equity-loan", "tax-credit", "financing", "caregiver", "fall-prevention", "aging-in-place", "local-alberta", "senior-discount", "phone", "email", "location", "hours", "star-review", "quote-request", "check", "arrow-right", "menu", "close", "chevron-down"] as const;
 
 /** Older names kept so existing content in lib/site.ts keeps working. */
 const aliases = {
@@ -119,6 +119,32 @@ const paths: Record<(typeof iconNames)[number], JSX.Element> = {
       <path d="M30 13h6"/><path d="M33 13v-3"/><path d="M30 17l-.5 2M33 17v3M36 17l.5 2"/>
       <path d="M28 34h8"/><circle cx="32" cy="37" r="0.1"/>
       <path d="M27 26v6"/>
+    </>
+  ),
+  "curbless-entry": (
+    <>
+      <path {...F} d="M26 8h16v30H26z"/>
+      <path d="M4 38h40"/><path d="M26 38V8h16v30"/>
+      <path d="M31 13h6"/><path d="M34 13v-3"/><path d="M31 17l-.5 2M34 17v3M37 17l.5 2"/>
+      <path d="M30 34h8"/>
+      <path d="M6 31h14"/><path d="M16 27l4 4-4 4"/>
+    </>
+  ),
+  "shower-seat": (
+    <>
+      <path {...F} d="M10 23h18v5H10z"/>
+      <path d="M10 6v36"/><path d="M6 42h36"/>
+      <path d="M10 23h18v5H10"/><path d="M24 28l4 14"/>
+      <path d="M10 9h22v3"/><path d="M27 17h10a5 5 0 0 0-10 0z"/>
+      <path d="M29 21l-.5 2M32 21v3M35 21l.5 2"/>
+    </>
+  ),
+  "wall-panels": (
+    <>
+      <path {...F} d="M8 8h10.7v32H8z"/><path {...F} d="M29.3 8H40v32H29.3z"/>
+      <rect x="8" y="8" width="32" height="32" rx="2"/>
+      <path d="M18.7 8v32M29.3 8v32"/>
+      <path d="M24 17v6M21 20h6"/>
     </>
   ),
   "quick-drain": (

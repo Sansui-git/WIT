@@ -1,11 +1,12 @@
 import type { MetadataRoute } from "next";
-import { siteConfig, primaryNav } from "@/lib/site";
+import { siteConfig, primaryNav, secondaryPages } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = siteConfig.url;
   // Build from the navigation, plus the pages not in the primary nav.
   const paths = [
     ...primaryNav.map((n) => n.href),
+    ...secondaryPages.map((n) => n.href),
     "/request-a-consultation",
     "/privacy-policy",
   ];
