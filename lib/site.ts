@@ -131,6 +131,7 @@ export const primaryNav: NavItem[] = [
 /** Pages linked from the footer and sitemap but not the header. */
 export const secondaryPages: NavItem[] = [
   { label: "Tub or Shower? Guide", href: "/tub-or-shower" },
+  { label: "Get an Instant Quote", href: "/get-a-quote" },
 ];
 
 export const footerNav: NavItem[] = [

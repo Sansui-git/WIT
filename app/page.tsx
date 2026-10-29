@@ -130,6 +130,9 @@ export default function HomePage() {
               <Link href="/request-a-consultation" className="btn btn--navy btn--lg">
                 Request a Free In-Home Assessment
               </Link>
+              <Link href="/get-a-quote" className="btn btn--outline btn--lg">
+                Get an Instant Quote
+              </Link>
               <a href={phoneLink} className="btn btn--outline btn--lg">
                 <Icon name="phone" width={22} height={22} />
                 Call Now
