@@ -118,6 +118,9 @@ export default function Header() {
           <Link href="/request-a-consultation" className="btn btn--primary btn--block">
             Request a Consultation
           </Link>
+          <Link href="/get-a-quote" className="btn btn--outline btn--block">
+            Get an Instant Quote
+          </Link>
         </div>
       </div>
     </header>
